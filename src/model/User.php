@@ -1,4 +1,5 @@
 <?php
+
 include_once 'Password.php';
 class User {
 
