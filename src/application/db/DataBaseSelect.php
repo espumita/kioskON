@@ -1,5 +1,5 @@
 <?php
-
+include_once 'DataBaseHelper.php';
 class DataBaseSelect {
 
     private $dbConnection;
@@ -9,7 +9,7 @@ class DataBaseSelect {
     }
 
     public function userCreationTime($userName) {
-        if($select =  $this->dbConnection->query("SELECT creationTime FROM users WHERE userName ='$userName'")){
+        if($select =  $this->dbConnection->query("SELECT ".CREATION_TIME." FROM ".TABLE_USERS." WHERE ".USER_NAME." ='$userName'")){
             if(mysqli_num_rows($select)){
                 $row = mysqli_fetch_assoc($select);
                 return $row['creationTime'];
@@ -19,7 +19,7 @@ class DataBaseSelect {
     }
 
     public function numOfRowsWhen(User $user) {
-        if($select =  $this->dbConnection->query("SELECT * FROM users WHERE userName ='".$user->name()."' AND password ='".$user->hashedPassword()."'")){
+        if($select =  $this->dbConnection->query("SELECT * FROM ".TABLE_USERS." WHERE ".USER_NAME." ='".$user->name()."' AND ".PASSWORD." ='".$user->hashedPassword()."'")){
             if(mysqli_num_rows($select)) return true;
         }
         return false;

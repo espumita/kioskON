@@ -1,5 +1,5 @@
 <?php
-
+include_once 'DataBaseHelper.php';
 class DataBaseDelete {
 
     private $dbConnection;
@@ -9,6 +9,6 @@ class DataBaseDelete {
     }
 
     public function userWithName($userName) {
-        return $this->dbConnection->query("DELETE FROM users WHERE userName = '".$userName."'");
+        return $this->dbConnection->query("DELETE FROM ".TABLE_USERS." WHERE userName = '$userName'");
     }
 }

@@ -8,6 +8,7 @@ class DataBaseConnection {
     private $port = "3306";
     private $connection;
 
+
     public function start() {
         $this->connection = new mysqli($this->host,$this->user,$this->pass,$this->dbName,$this->port);
         return $this->connection->connect_error ? false : true;
