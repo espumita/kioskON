@@ -1,16 +1,12 @@
 <?php
+include_once 'DataBaseHelper.php';
 
 class DataBaseConnection {
-    private $host = "db4free.net";
-    private $user = "kioskon";
-    private $pass = "kioskon";
-    private $dbName = "kioskon";
-    private $port = "3306";
     private $connection;
 
 
     public function start() {
-        $this->connection = new mysqli($this->host,$this->user,$this->pass,$this->dbName,$this->port);
+        $this->connection = new mysqli(MYSQL_HOST,MYSQL_USER,MYSQL_PASSWORD,MYSQL_DBNAME,MYSQL_PORT);
         return $this->connection->connect_error ? false : true;
     }
 

@@ -71,6 +71,4 @@ class _Login extends PHPUnit_Framework_TestCase{
         $this->assertFalse((new loginFilter("سسسسسسس"))->check());
     }
 
-
-
 }

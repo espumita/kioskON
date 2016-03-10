@@ -3,13 +3,11 @@
     <meta charset="utf-8">
 </head>
 <body>
-    <form action="checkLogin.php" method="post">
-        <ul>
-            <li>Usuario: <input type="text" name="user"></li>
-            <li>Contraseña <input type="password" name="pass"></li>
-            <li><input type="submit" name="submit" value="login"></li>
-        </ul>
-     </form>
+<?php
+session_start();
+include_once 'application/ui/View.php';
+if(isset($_SESSION['user']) && isset($_SESSION['id']) ) View::logOut();
+else View::loginForm();
+?>
 </body>
 </html>
-

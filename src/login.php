@@ -19,6 +19,13 @@ if(!$dbConnection->start()) {
     header('Location: index.php?BadLogin=notConnection');
     exit;
 }
-if((new Login($dbConnection,$_POST['user'],$_POST['pass']))->check()) echo "Logged as: ".$_POST['user'];
+$login = new Login($dbConnection,$_POST['user'],$_POST['pass']);
+if($login->check()){
+    session_start();
+    $_SESSION['user'] = $_POST['user'];
+    $_SESSION['id'] = $login->userId();
+    header('Location: index.php?Login=OK');
+    exit;
+}
 else header('Location: index.php?BadLogin=wrongInfo');
 exit;

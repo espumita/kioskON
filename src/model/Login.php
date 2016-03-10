@@ -9,6 +9,7 @@ class Login {
     private $userName;
     private $password;
     private $dbConnection;
+    private $userId;
 
     public function __construct(DataBaseConnection $dbConnection, $userName, $password) {
         $this->userName = $userName;
@@ -26,6 +27,11 @@ class Login {
     }
 
     public function checkIfPasswordIsCorrect($userCreationTime) {
-        return (new DataBaseSelect($this->dbConnection->connection()))->numOfRowsWhen(new User($this->userName, new Password($this->password . $userCreationTime)));
+        $this->userId =  (new DataBaseSelect($this->dbConnection->connection()))->getUserId(new User($this->userName, new Password($this->password . $userCreationTime)));
+        return $this->userId  > 0;
+    }
+
+    public function userId() {
+        return $this->userId;
     }
 }
