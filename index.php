@@ -4,9 +4,12 @@
 </head>
 <body>
 <?php
+
+require_once __DIR__.'../vendor/autoload.php';
+
 session_start();
-if(isset($_SESSION['user']) && isset($_SESSION['id']) ) View::logOut();
-else View::loginForm();
+if(isset($_SESSION['user']) && isset($_SESSION['id']) ) \kioskon\application\ui\View::logOut();
+else \kioskon\application\ui\View::loginForm();
 ?>
 </body>
 </html>
