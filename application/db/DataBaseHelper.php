@@ -2,7 +2,7 @@
 define('MYSQL_HOST','db4free.net');
 define('MYSQL_USER','kioskon');
 define('MYSQL_PASSWORD','kioskon');
-define('MYSQL_DBNAME','kioskon');
+define('MYSQL_DB_NAME','kioskon');
 define('MYSQL_PORT','3306');
 
 define('TABLE_USERS','users');

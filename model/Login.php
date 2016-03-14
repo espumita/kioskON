@@ -1,8 +1,8 @@
 <?php
 
-include_once '/../src/application/db/DataBaseSelect.php';
-include_once '/../src/model/User.php';
-include_once '/../src/model/Password.php';
+include_once '/../application/db/DataBaseSelect.php';
+include_once '/../model/User.php';
+include_once '/../model/Password.php';
 
 class Login {
 

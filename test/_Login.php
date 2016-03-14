@@ -1,10 +1,10 @@
 <?php
-include_once(__DIR__ . '/../src/model/User.php');
-include_once(__DIR__ . '/../src/model/Login.php');
-include_once(__DIR__ . '/../src/model/loginFilter.php');
-include_once(__DIR__ . '/../src/application/db/DataBaseConnection.php');
-include_once(__DIR__ . '/../src/application/db/DataBaseDelete.php');
-include_once(__DIR__ . '/../src/application/db/DataBaseInsert.php');
+include_once(__DIR__ . '/../model/User.php');
+include_once(__DIR__ . '/../model/Login.php');
+include_once(__DIR__ . '/../model/loginFilter.php');
+include_once(__DIR__ . '/../application/db/DataBaseConnection.php');
+include_once(__DIR__ . '/../application/db/DataBaseDelete.php');
+include_once(__DIR__ . '/../application/db/DataBaseInsert.php');
 
 class _Login extends PHPUnit_Framework_TestCase{
 

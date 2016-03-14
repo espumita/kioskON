@@ -6,7 +6,7 @@ class DataBaseConnection {
 
 
     public function start() {
-        $this->connection = new mysqli(MYSQL_HOST,MYSQL_USER,MYSQL_PASSWORD,MYSQL_DBNAME,MYSQL_PORT);
+        $this->connection = new mysqli(MYSQL_HOST,MYSQL_USER,MYSQL_PASSWORD,MYSQL_DB_NAME,MYSQL_PORT);
         return $this->connection->connect_error ? false : true;
     }
 
