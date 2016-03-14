@@ -1,6 +1,9 @@
 <?php
 
-include_once 'Password.php';
+namespace kioskon\model;
+
+use kioskon\model\Password;
+
 class User {
 
     private $userNickName;

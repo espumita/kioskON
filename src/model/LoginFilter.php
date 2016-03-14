@@ -1,6 +1,8 @@
 <?php
 
-class loginFilter {
+namespace kioskon\model;
+
+class LoginFilter {
 
     private $loginFormData;
 

@@ -1,5 +1,7 @@
 <?php
 
+namespace kioskon\application\ui;
+
 class View{
 
     public static function loginForm(){

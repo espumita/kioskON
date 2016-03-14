@@ -1,0 +1,14 @@
+{
+  "require": {
+    "phpunit/dbunit": "2.0.2",
+    "phpunit/phpunit": "5.2.11"
+  },
+  "autoload":{
+       "psr-4":{
+             "kioskon\\": "src"
+       }
+  },
+  "config": {
+    "optimize-autoloader": true
+  }
+}

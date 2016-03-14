@@ -1,10 +1,12 @@
 <?php
-include_once(__DIR__ . '/../model/User.php');
-include_once(__DIR__ . '/../model/Login.php');
-include_once(__DIR__ . '/../model/loginFilter.php');
-include_once(__DIR__ . '/../application/db/DataBaseConnection.php');
-include_once(__DIR__ . '/../application/db/DataBaseDelete.php');
-include_once(__DIR__ . '/../application/db/DataBaseInsert.php');
+require_once __DIR__.'/../vendor/autoload.php';
+use kioskon\model\User;
+use kioskon\model\Login;
+use kioskon\model\Password;
+use kioskon\model\LoginFilter;
+use kioskon\application\db\DataBaseConnection;
+use kioskon\application\db\DataBaseDelete;
+use kioskon\application\db\DataBaseInsert;
 
 class _Login extends PHPUnit_Framework_TestCase{
 
@@ -50,25 +52,25 @@ class _Login extends PHPUnit_Framework_TestCase{
     }
 
     public function test_user_and_password_login_filters(){
-        $this->assertFalse((new loginFilter("asdfghjklasdfghj"))->check());
-        $this->assertTrue((new loginFilter("asdfghjklasdfgh"))->check());
-        $this->assertFalse((new loginFilter("asdf"))->check());
-        $this->assertTrue((new loginFilter("asdfg"))->check());
-        $this->assertFalse((new loginFilter(""))->check());
-        $this->assertTrue((new loginFilter("123123"))->check());
-        $this->assertTrue((new loginFilter("pepe33"))->check());
-        $this->assertFalse((new loginFilter("            "))->check());
-        $this->assertFalse((new loginFilter("; Select * from users;"))->check());
-        $this->assertFalse((new loginFilter("; xcvý5♣ 5♠56"))->check());
-        $this->assertFalse((new loginFilter("aa aa"))->check());
-        $this->assertFalse((new loginFilter("aaaa "))->check());
-        $this->assertFalse((new loginFilter("ñññññ"))->check());
-        $this->assertTrue((new loginFilter("óooóó"))->check());
-        $this->assertFalse((new loginFilter("_%%^_a12"))->check());
-        $this->assertFalse((new loginFilter("한국어/조어"))->check());
-        $this->assertFalse((new loginFilter("РУССКИЙ ТЕСТ"))->check());
-        $this->assertFalse((new loginFilter("النص العربي"))->check());
-        $this->assertFalse((new loginFilter("سسسسسسس"))->check());
+        $this->assertFalse((new LoginFilter("asdfghjklasdfghj"))->check());
+        $this->assertTrue((new LoginFilter("asdfghjklasdfgh"))->check());
+        $this->assertFalse((new LoginFilter("asdf"))->check());
+        $this->assertTrue((new LoginFilter("asdfg"))->check());
+        $this->assertFalse((new LoginFilter(""))->check());
+        $this->assertTrue((new LoginFilter("123123"))->check());
+        $this->assertTrue((new LoginFilter("pepe33"))->check());
+        $this->assertFalse((new LoginFilter("            "))->check());
+        $this->assertFalse((new LoginFilter("; Select * from users;"))->check());
+        $this->assertFalse((new LoginFilter("; xcvý5♣ 5♠56"))->check());
+        $this->assertFalse((new LoginFilter("aa aa"))->check());
+        $this->assertFalse((new LoginFilter("aaaa "))->check());
+        $this->assertFalse((new LoginFilter("ñññññ"))->check());
+        $this->assertTrue((new LoginFilter("óooóó"))->check());
+        $this->assertFalse((new LoginFilter("_%%^_a12"))->check());
+        $this->assertFalse((new LoginFilter("한국어/조어"))->check());
+        $this->assertFalse((new LoginFilter("РУССКИЙ ТЕСТ"))->check());
+        $this->assertFalse((new LoginFilter("النص العربي"))->check());
+        $this->assertFalse((new LoginFilter("سسسسسسس"))->check());
     }
 
 }

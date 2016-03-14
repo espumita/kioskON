@@ -4,7 +4,7 @@ if(!isset($_POST['user']) || empty($_POST['user']) || !isset($_POST['pass']) || 
     exit;
 }
 
-include_once "model/loginFilter.php";
+include_once "model/LoginFilter.php";
 
 if(!(new loginFilter($_POST['user']))->check() || !(new loginFilter($_POST['pass']))->check()){
     header('Location: index.php?BadLogin=DataError');

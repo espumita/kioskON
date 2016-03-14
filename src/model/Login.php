@@ -1,8 +1,8 @@
 <?php
+namespace kioskon\model;
 
-include_once '/../application/db/DataBaseSelect.php';
-include_once '/../model/User.php';
-include_once '/../model/Password.php';
+use kioskon\application\db\DataBaseConnection;
+use kioskon\application\db\DataBaseSelect;
 
 class Login {
 

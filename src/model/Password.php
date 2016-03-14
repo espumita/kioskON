@@ -1,5 +1,7 @@
 <?php
 
+namespace kioskon\model;
+
 class Password {
 
     private $passwordAndTime;
