@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__.'../vendor/autoload.php';
+require_once __DIR__.'/vendor/autoload.php';
 use kioskon\application\db\DataBaseConnection;
 use kioskon\model\Login;
 use kioskon\model\LoginFilter;
