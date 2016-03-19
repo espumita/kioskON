@@ -3,38 +3,30 @@
 require_once __DIR__.'/vendor/autoload.php';
 use kioskon\application\db\DataBaseConnection;
 use kioskon\application\db\DataBaseInsert;
+use kioskon\application\db\DataBaseSelect;
+use kioskon\application\utils\Check;
+use kioskon\application\utils\Redirection;
 use kioskon\model\Magazine;
 use kioskon\model\MagazineFilter;
 
 session_start();
-if(!isset($_SESSION['user']) || !isset($_SESSION['id']) ){
-    header('Location: index.php?BadLogin=badLogin');
-    exit;
-}
+if(!Check::session()) (new Redirection())->to("index.php?BadLogin=badLogin");
 
-if(!isset($_POST['magazine']) || empty($_POST['magazine']) || !isset($_POST['periodicity']) || empty($_POST['periodicity'])){
-    header('Location: index.php?BadForm=badForm');
-    exit;
-}
+if(!Check::post('magazine') || !Check::post('periodicity'))(new Redirection())->to("index.php?BadForm=badForm");
 
 if(!(new MagazineFilter($_POST['magazine']))->checkName() || !(new MagazineFilter($_POST['periodicity']))->checkPeriodicity()){
-    header('Location: index.php?BadForm=DataError');
-    exit;
+    (new Redirection())->to("index.php?BadForm=DataError");
 }
-
 
 $dbConnection = new DataBaseConnection();
-if(!$dbConnection->start()) {
-    header('Location: index.php?BadConnection=notConnection');
-    exit;
+if(!$dbConnection->start()) (new Redirection())->to("index.php?BadConnection=notConnection");
+
+if((new DataBaseSelect($dbConnection->connection()))->checkMagazineName($_POST['magazine'])){
+    (new Redirection())->to("index.php?BadForm=DataError");
 }
-
-//check name existence
-
 
 if((new DataBaseInsert($dbConnection->connection()))->inTableMagazines(new Magazine($_POST['magazine'],$_SESSION['id'],$_POST['periodicity']))){
-    header('Location: index.php?GoodMagazineCreation=OK');
-    exit;
+    (new Redirection())->to("index.php?GoodMagazineCreation=OK");
 }
-header('Location: index.php?BadCreation=wrongFromInfo');
-exit;
+
+(new Redirection())->to("index.php?BadCreation=wrongFromInfo");

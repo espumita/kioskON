@@ -63,9 +63,9 @@ class _CreateMagazine extends PHPUnit_Framework_TestCase{
 
     public function test_when_we_check_if_magazine_name_already_exists(){
         $this->assertTrue((new DataBaseInsert(self::$dbConnection->connection()))->inTableMagazines(new Magazine("magazineTest",self::$userId,12)));
-        $this->assertTrue((new DataBaseSelect(self::$dbConnection->connection()))->magazineName("magazineTest"));
+        $this->assertTrue((new DataBaseSelect(self::$dbConnection->connection()))->checkMagazineName("magazineTest"));
         $this->assertTrue((new DataBaseDelete(self::$dbConnection->connection()))->magazineWithName("magazineTest"));
-        $this->assertFalse((new DataBaseSelect(self::$dbConnection->connection()))->magazineName("magazineTest"));
+        $this->assertFalse((new DataBaseSelect(self::$dbConnection->connection()))->checkMagazineName("magazineTest"));
     }
 
 }

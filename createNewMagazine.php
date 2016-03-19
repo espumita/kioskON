@@ -1,12 +1,13 @@
 <?php
+
 require_once __DIR__.'/vendor/autoload.php';
 use kioskon\application\ui\View;
+use kioskon\application\utils\Check;
+use kioskon\application\utils\Redirection;
 
 session_start();
-if(!isset($_SESSION['user']) || !isset($_SESSION['id']) ){
-    header('Location: index.php?BadLogin=badLogin');
-    exit;
-}
+if(!Check::session()) (new Redirection())->to("index.php?BadLogin=badLogin");
+
 View::pageHeader();
 View::createMagazineForm();
 View::pageFooter();

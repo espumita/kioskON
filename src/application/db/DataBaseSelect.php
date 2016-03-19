@@ -45,7 +45,7 @@ class DataBaseSelect extends DataBaseHelper{
         }
     }
 
-    public function magazineName($magazineName) {
+    public function checkMagazineName($magazineName) {
         if($select =  $this->dbConnection->query("SELECT * FROM ".$this->TABLE_MAGAZINES.
             " WHERE ".$this->MAGAZINE_NAME." = '$magazineName'")){
             return mysqli_num_rows($select) == 1 ? true : false;
