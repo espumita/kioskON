@@ -28,5 +28,5 @@ if($login->check()){
     header('Location: index.php?Login=OK');
     exit;
 }
-else header('Location: index.php?BadLogin=wrongInfo');
+header('Location: index.php?BadLogin=wrongInfo');
 exit;
