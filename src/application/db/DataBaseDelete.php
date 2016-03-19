@@ -10,12 +10,14 @@ class DataBaseDelete extends DataBaseHelper{
     }
 
     public function userWithName($userName) {
-        return $this->dbConnection->query("DELETE FROM ".$this->TABLE_USERS.
+        $this->dbConnection->query("DELETE FROM ".$this->TABLE_USERS.
             " WHERE $this->USER_NAME = '$userName'");
+        return $this->dbConnection->affected_rows == 1 ? true : false ;
     }
 
     public function magazineWithName($magazineName) {
-        return $this->dbConnection->query("DELETE FROM ".$this->TABLE_MAGAZINES.
+        $this->dbConnection->query("DELETE FROM ".$this->TABLE_MAGAZINES.
             " WHERE $this->MAGAZINE_NAME = '$magazineName'");
+        return $this->dbConnection->affected_rows == 1 ? true : false ;
     }
 }

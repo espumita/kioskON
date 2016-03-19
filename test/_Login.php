@@ -37,6 +37,17 @@ class _Login extends PHPUnit_Framework_TestCase{
         $dbConnection->quit();
     }
 
+    public function test_when_we_try_to_insert_an_existing_user(){
+        $dbConnection = new DataBaseConnection();
+        $dbConnection->start();
+        $time= time();
+        $this->assertTrue((new DataBaseInsert($dbConnection->connection()))->inTableUsers(new User("userTest",new Password("1234".$time)),$time));
+        $this->assertFalse((new DataBaseInsert($dbConnection->connection()))->inTableUsers(new User("userTest",new Password("1234".$time)),$time));
+        $this->assertTrue((new DataBaseDelete($dbConnection->connection()))->userWithName("userTest"));
+        $this->assertFalse((new DataBaseDelete($dbConnection->connection()))->userWithName("userTest"));
+        $dbConnection->quit();
+    }
+
     public function test_successful_and_bad_login(){
         $dbConnection = new DataBaseConnection();
         $dbConnection->start();

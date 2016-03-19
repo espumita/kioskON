@@ -41,5 +41,13 @@ class _CreateMagazine extends PHPUnit_Framework_TestCase{
         $this->assertTrue((new DataBaseDelete(self::$dbConnection->connection()))->magazineWithName("magazineTest"));
     }
 
+    public function test_when_we_try_insert_an_existing_magazine() {
+        $this->assertTrue((new DataBaseInsert(self::$dbConnection->connection()))->inTableMagazines(new Magazine("magazineTest",self::$userId,12)));
+        $this->assertFalse((new DataBaseInsert(self::$dbConnection->connection()))->inTableMagazines(new Magazine("magazineTest",self::$userId,12)));
+        $this->assertTrue((new DataBaseDelete(self::$dbConnection->connection()))->magazineWithName("magazineTest"));
+        $this->assertFalse((new DataBaseDelete(self::$dbConnection->connection()))->magazineWithName("magazineTest"));
+
+    }
+
 
 }
