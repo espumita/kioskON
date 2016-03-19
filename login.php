@@ -2,31 +2,29 @@
 
 require_once __DIR__.'/vendor/autoload.php';
 use kioskon\application\db\DataBaseConnection;
+use kioskon\application\utils\Check;
+use kioskon\application\utils\Redirection;
 use kioskon\model\Login;
 use kioskon\model\LoginFilter;
 
-if(!isset($_POST['user']) || empty($_POST['user']) || !isset($_POST['pass']) || empty($_POST['pass'])){
-    header('Location: index.php?BadLogin=badLogin');
-    exit;
-}
+session_start();
+if(Check::session())(new Redirection())->to("index.php?BadLogin=LoginOn");
+
+if(!Check::post('user') || !Check::post('pass'))(new Redirection())->to("index.php?BadLogin=badLogin");
 
 if(!(new LoginFilter($_POST['user']))->check() || !(new LoginFilter($_POST['pass']))->check()){
-    header('Location: index.php?BadLogin=DataError');
-    exit;
+    (new Redirection())->to("index.php?BadLogin=DataError");
 }
 
 $dbConnection = new DataBaseConnection();
-if(!$dbConnection->start()) {
-    header('Location: index.php?BadLogin=notConnection');
-    exit;
-}
+if(!$dbConnection->start()) (new Redirection())->to("index.php?notConnection");
+
 $login = new Login($dbConnection,$_POST['user'],$_POST['pass']);
 if($login->check()){
-    session_start();
     $_SESSION['user'] = $_POST['user'];
     $_SESSION['id'] = $login->userId();
-    header('Location: index.php?Login=OK');
-    exit;
+    (new Redirection())->to("index.php?Login=OK");
 }
-else header('Location: index.php?BadLogin=wrongInfo');
-exit;
+
+(new Redirection())->to("index.php?BadLogin=wrongInfo");
+
