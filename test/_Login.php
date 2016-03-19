@@ -12,8 +12,8 @@ class _Login extends PHPUnit_Framework_TestCase{
 
     public function test_get_mysqli_db_connection_and_disconnection(){
         $dbConnection = new DataBaseConnection();
-        $this->assertEquals($dbConnection->start(),true);
-        $this->assertEquals($dbConnection->quit(),true);
+        $this->assertTrue($dbConnection->start());
+        $this->assertTrue($dbConnection->quit());
     }
 
     public function test_get_user_name(){
@@ -32,8 +32,8 @@ class _Login extends PHPUnit_Framework_TestCase{
         $dbConnection = new DataBaseConnection();
         $dbConnection->start();
         $time= time();
-        $this->assertEquals((new DataBaseInsert($dbConnection->connection()))->inTableUsers(new User("userTest",new Password("1234".$time)),$time),true);
-        $this->assertEquals((new DataBaseDelete($dbConnection->connection()))->userWithName("userTest"),true);
+        $this->assertTrue((new DataBaseInsert($dbConnection->connection()))->inTableUsers(new User("userTest",new Password("1234".$time)),$time));
+        $this->assertTrue((new DataBaseDelete($dbConnection->connection()))->userWithName("userTest"));
         $dbConnection->quit();
     }
 
@@ -41,12 +41,12 @@ class _Login extends PHPUnit_Framework_TestCase{
         $dbConnection = new DataBaseConnection();
         $dbConnection->start();
         $time= time();
-        $this->assertEquals((new DataBaseInsert($dbConnection->connection()))->inTableUsers(new User("userTest",new Password("1234".$time)),$time),true);
-        $this->assertEquals((new Login($dbConnection,"userTest","1234"))->check(),true);
-        $this->assertEquals((new Login($dbConnection,"userTest","12345"))->check(),false);
-        $this->assertEquals((new Login($dbConnection,"userTest5","1234"))->check(),false);
-        $this->assertEquals((new Login($dbConnection,"",""))->check(),false);
-        $this->assertEquals((new DataBaseDelete($dbConnection->connection()))->userWithName("userTest"),true);
+        $this->assertTrue((new DataBaseInsert($dbConnection->connection()))->inTableUsers(new User("userTest",new Password("1234".$time)),$time));
+        $this->assertTrue((new Login($dbConnection,"userTest","1234"))->check());
+        $this->assertFalse((new Login($dbConnection,"userTest","12345"))->check());
+        $this->assertFalse((new Login($dbConnection,"userTest5","1234"))->check());
+        $this->assertFalse((new Login($dbConnection,"",""))->check());
+        $this->assertTrue((new DataBaseDelete($dbConnection->connection()))->userWithName("userTest"));
         $dbConnection->quit();
 
     }
