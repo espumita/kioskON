@@ -5,7 +5,7 @@ use kioskon\application\db\DataBaseConnection;
 use kioskon\application\ui\View;
 use kioskon\application\utils\Check;
 
-View::pageHeader();
+View::pageHeader('KioskON');
 session_start();
 if(Check::session()){
     View::logOut();
@@ -15,5 +15,7 @@ if(Check::session()){
         View::userCurrentMagazinesList($dbConnection->connection());
         $dbConnection->quit();
     }
+    View::issuesUploadOption();
+
 }else View::loginForm();
 View::pageFooter();

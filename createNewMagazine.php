@@ -8,6 +8,6 @@ use kioskon\application\utils\Redirection;
 session_start();
 if(!Check::session()) (new Redirection())->to("index.php?BadLogin=badLogin");
 
-View::pageHeader();
+View::pageHeader('Crear Revista');
 View::createMagazineForm();
 View::pageFooter();

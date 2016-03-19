@@ -7,10 +7,11 @@ use kioskon\application\db\DataBaseSelect;
 
 class View{
 
-    public static function pageHeader() {
+    public static function pageHeader($tittle) {
         echo '
 <html>
 <head>
+    <title>'.$tittle.'</title>
     <meta charset="utf-8">
 </head>
 <body>';
@@ -85,5 +86,53 @@ class View{
     <td>'.$row['magazineName'].'</td>
     <td>'.$row['periodicity'].'</td>
 </tr>';
+    }
+
+    public static function issuesUploadOption() {
+        echo'
+<a href="uploadNewIssue.php">Subir nueva entrega de revista</a>
+        ';
+    }
+
+    public static function issuesUploadForm($dbConnection) {
+        echo'
+<form method="post" enctype="multipart/form-data" action="checkUploadIssue.php">
+    <table>
+        <tr>
+            <td><input name="userFile" type="file"></td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td> Revista: </td>
+            <td>
+                <select name="magazines">';
+        self::deployMagazinesOptions($dbConnection);
+        echo '</select>
+            </td>
+        </tr>
+        <tr>
+            <td>Número: </td>
+            <td><input name="number" type="text"">
+            </td>
+        </tr>
+        <tr>
+            <td>Coste: </td>
+            <td><input name="cost" type="text">
+            </td>
+        </tr>
+        <tr>
+            <td><input name="upload" type="submit" value="Subir"></td>
+        </tr>
+    </table>
+</form>';
+    }
+
+    private static function deployMagazinesOptions($dbConnection) {
+        $select = (new DataBaseSelect($dbConnection))->allUserMagazines($_SESSION['id']);
+        while ($row = mysqli_fetch_row($select)) {
+            echo '
+<option value="'.$row[0].'">'.$row[1].'</option>';
+        }
     }
 }
