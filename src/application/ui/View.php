@@ -2,6 +2,9 @@
 
 namespace kioskon\application\ui;
 
+use kioskon\application\db\DataBaseConnection;
+use kioskon\application\db\DataBaseSelect;
+
 class View{
 
     public static function pageHeader() {
@@ -53,5 +56,34 @@ class View{
         <li><input type="submit" value="Crear"></li>
     </ul>
 </form>';
+    }
+
+    public static function userCurrentMagazinesList($dbConnection) {
+        echo '
+<h2>Mis revistas</h2>
+<table>
+   <tr>
+       <th>id</th>
+       <th>Nombre</th>
+       <th>Periodicidad</th>
+   </tr>';
+        self::deployMagazineTableRows($dbConnection);
+        echo '
+</table>';
+    }
+
+    public static function deployMagazineTableRows($dbConnection){
+        if($select = (new DataBaseSelect($dbConnection))->getAllUserMagazines($_SESSION['id'])){
+            while ($row = $select->fetch_assoc()) self::deploySingleRow($row);
+        };
+    }
+
+    public static function deploySingleRow($row) {
+        echo '
+<tr>
+    <td>'.$row['_id'].'</td>
+    <td>'.$row['magazineName'].'</td>
+    <td>'.$row['periodicity'].'</td>
+</tr>';
     }
 }

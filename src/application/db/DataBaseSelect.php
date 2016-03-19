@@ -34,4 +34,14 @@ class DataBaseSelect extends DataBaseHelper{
         }
         return -1;
     }
+
+    public function getAllUserMagazines($id) {
+        if( $select = $this->dbConnection->query("SELECT ".$this->MAGAZINE_ID.",".$this->MAGAZINE_NAME.",".$this->PERIODICITY.
+            " FROM ".$this->TABLE_MAGAZINES.
+            " WHERE ".$this->OWNER."='$id'")){
+
+            if(mysqli_num_rows($select)) return $select;
+            return -1;
+        }
+    }
 }
