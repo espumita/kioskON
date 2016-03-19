@@ -27,7 +27,7 @@ class Login {
     }
 
     public function checkIfPasswordIsCorrect($userCreationTime) {
-        $this->userId =  (new DataBaseSelect($this->dbConnection->connection()))->getUserId(new User($this->userName, new Password($this->password . $userCreationTime)));
+        $this->userId =  (new DataBaseSelect($this->dbConnection->connection()))->userId(new User($this->userName, new Password($this->password . $userCreationTime)));
         return $this->userId  > 0;
     }
 

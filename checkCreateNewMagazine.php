@@ -4,6 +4,7 @@ require_once __DIR__.'/vendor/autoload.php';
 use kioskon\application\db\DataBaseConnection;
 use kioskon\application\db\DataBaseInsert;
 use kioskon\model\Magazine;
+use kioskon\model\MagazineFilter;
 
 session_start();
 if(!isset($_SESSION['user']) || !isset($_SESSION['id']) ){
@@ -16,7 +17,10 @@ if(!isset($_POST['magazine']) || empty($_POST['magazine']) || !isset($_POST['per
     exit;
 }
 
-//check form data filters
+if(!(new MagazineFilter($_POST['magazine']))->checkName() || !(new MagazineFilter($_POST['periodicity']))->checkPeriodicity()){
+    header('Location: index.php?BadForm=DataError');
+    exit;
+}
 
 
 $dbConnection = new DataBaseConnection();

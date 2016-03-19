@@ -73,7 +73,7 @@ class View{
     }
 
     public static function deployMagazineTableRows($dbConnection){
-        if($select = (new DataBaseSelect($dbConnection))->getAllUserMagazines($_SESSION['id'])){
+        if($select = (new DataBaseSelect($dbConnection))->allUserMagazines($_SESSION['id'])){
             while ($row = $select->fetch_assoc()) self::deploySingleRow($row);
         };
     }

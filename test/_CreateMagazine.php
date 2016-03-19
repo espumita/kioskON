@@ -3,8 +3,10 @@
 use kioskon\application\db\DataBaseConnection;
 use kioskon\application\db\DataBaseDelete;
 use kioskon\application\db\DataBaseInsert;
+use kioskon\application\db\DataBaseSelect;
 use kioskon\model\Login;
 use kioskon\model\Magazine;
+use kioskon\model\MagazineFilter;
 use kioskon\model\Password;
 use kioskon\model\User;
 
@@ -49,5 +51,21 @@ class _CreateMagazine extends PHPUnit_Framework_TestCase{
 
     }
 
+    public function test_when_we_check_Magazine_Name_and_periodicity_Filter() {
+        $this->assertTrue((new MagazineFilter("Natura"))->checkName());
+        $this->assertFalse((new MagazineFilter("a"))->checkName());
+        $this->assertFalse((new MagazineFilter("asdfghjklasdfghjklasdfghjklasdfghjklasdfghjklasdfghjklasdfghjklasdfghjkl"))->checkName());
+        $this->assertTrue((new MagazineFilter("El Periódico de Catalunya (Castellano)"))->checkName());
+        $this->assertTrue((new MagazineFilter("23"))->checkPeriodicity());
+        $this->assertFalse((new MagazineFilter("abcde"))->checkPeriodicity());
+        $this->assertFalse((new MagazineFilter("@/Á"))->checkPeriodicity());
+    }
+
+    public function test_when_we_check_if_magazine_name_already_exists(){
+        $this->assertTrue((new DataBaseInsert(self::$dbConnection->connection()))->inTableMagazines(new Magazine("magazineTest",self::$userId,12)));
+        $this->assertTrue((new DataBaseSelect(self::$dbConnection->connection()))->magazineName("magazineTest"));
+        $this->assertTrue((new DataBaseDelete(self::$dbConnection->connection()))->magazineWithName("magazineTest"));
+        $this->assertFalse((new DataBaseSelect(self::$dbConnection->connection()))->magazineName("magazineTest"));
+    }
 
 }

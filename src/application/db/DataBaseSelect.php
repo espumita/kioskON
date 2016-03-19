@@ -22,8 +22,8 @@ class DataBaseSelect extends DataBaseHelper{
         return false;
     }
 
-    public function getUserId(User $user) {
-        if($select =  $this->dbConnection->query("SELECT * FROM ".$this->TABLE_USERS.
+    public function userId(User $user) {
+        if($select =  $this->dbConnection->query("SELECT ".$this->USER_ID." FROM ".$this->TABLE_USERS.
             " WHERE ".$this->USER_NAME." ='".$user->name().
             "' AND ".$this->PASSWORD." ='".$user->hashedPassword()."'")){
 
@@ -35,7 +35,7 @@ class DataBaseSelect extends DataBaseHelper{
         return -1;
     }
 
-    public function getAllUserMagazines($id) {
+    public function allUserMagazines($id) {
         if( $select = $this->dbConnection->query("SELECT ".$this->MAGAZINE_ID.",".$this->MAGAZINE_NAME.",".$this->PERIODICITY.
             " FROM ".$this->TABLE_MAGAZINES.
             " WHERE ".$this->OWNER."='$id'")){
@@ -43,5 +43,13 @@ class DataBaseSelect extends DataBaseHelper{
             if(mysqli_num_rows($select)) return $select;
             return -1;
         }
+    }
+
+    public function magazineName($magazineName) {
+        if($select =  $this->dbConnection->query("SELECT * FROM ".$this->TABLE_MAGAZINES.
+            " WHERE ".$this->MAGAZINE_NAME." = '$magazineName'")){
+            return mysqli_num_rows($select) == 1 ? true : false;
+        }
+        return false;
     }
 }
