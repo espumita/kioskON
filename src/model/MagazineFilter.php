@@ -20,6 +20,6 @@ class MagazineFilter {
     }
 
     public function checkPeriodicity() {
-        return is_numeric($this->MagazineFormData);
+        return !filter_var($this->MagazineFormData,FILTER_VALIDATE_INT) === false;
     }
 }

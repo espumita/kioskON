@@ -22,11 +22,11 @@ $dbConnection = new DataBaseConnection();
 if(!$dbConnection->start()) (new Redirection())->to("index.php?BadConnection=notConnection");
 
 if((new DataBaseSelect($dbConnection->connection()))->checkMagazineName($_POST['magazine'])){
-    (new Redirection())->to("index.php?BadForm=DataError");
+    (new Redirection())->to("index.php?BadForm=nameAlreadyExists");
 }
 
 if((new DataBaseInsert($dbConnection->connection()))->inTableMagazines(new Magazine($_POST['magazine'],$_SESSION['id'],$_POST['periodicity']))){
-    (new Redirection())->to("index.php?GoodMagazineCreation=OK");
+    (new Redirection())->to("index.php?MagazineCreation=OK");
 }
 
-(new Redirection())->to("index.php?BadCreation=wrongFromInfo");
+(new Redirection())->to("index.php?BadCreation=wrongFormInfo");
