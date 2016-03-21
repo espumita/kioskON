@@ -9,6 +9,7 @@ if(!Check::session())(new Redirection())->to("index.php?Logout=BadLogOut");
 
 unset($_SESSION['user']);
 unset($_SESSION['id']);
+unset($_SESSION['email']);
 session_destroy();
 
 (new Redirection())->to("index.php?Logout=OK");

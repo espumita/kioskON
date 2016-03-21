@@ -17,10 +17,12 @@ class DataBaseInsert extends DataBaseHelper{
         return $this->dbConnection->query("INSERT INTO ".$this->TABLE_USERS." (".
             $this->USER_NAME.",".
             $this->PASSWORD.",".
-            $this->CREATION_TIME.") VALUES ('".
+            $this->CREATION_TIME.",".
+            $this->EMAIL.") VALUES ('".
                 $newUser->name()."','".
                 $newUser->hashedPassword()."','".
-                $time."')");
+                $time."','".
+                $newUser->email()."')");
     }
 
     public function inTableMagazines(Magazine $magazine) {

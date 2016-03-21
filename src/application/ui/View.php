@@ -2,7 +2,6 @@
 
 namespace kioskon\application\ui;
 
-use kioskon\application\db\DataBaseConnection;
 use kioskon\application\db\DataBaseSelect;
 
 class View{
@@ -36,7 +35,7 @@ class View{
 
     public static function logOut(){
         echo '
-<p>Loged as: '.$_SESSION['user'].' and user id is:'.$_SESSION['id'].'</p>
+<p>Loged as: '.$_SESSION['user'].' and user id is:'.$_SESSION['id'].' and email is '.$_SESSION['email'].'</p>
 </br>
 <a href="logout.php">Logout</a>
 </br>
@@ -75,7 +74,9 @@ class View{
 
     public static function deployMagazineTableRows($dbConnection){
         if($select = (new DataBaseSelect($dbConnection))->allUserMagazines($_SESSION['id'])){
-            while ($row = $select->fetch_assoc()) self::deploySingleRow($row);
+            if( $select != -1){
+                while ($row = $select->fetch_assoc()) self::deploySingleRow($row);
+            }
         };
     }
 
@@ -105,21 +106,18 @@ class View{
     <table>
         <tr>
             <td> Revista: </td>
-            <td>
-                <select name="magazines">';
+            <td><select name="magazines">';
         self::deployMagazinesOptions($dbConnection);
-        echo '</select>
-            </td>
+        echo '
+            </select></td>
         </tr>
         <tr>
             <td>Número: </td>
-            <td><input name="number" type="text"">
-            </td>
+            <td><input name="number" type="text""></td>
         </tr>
         <tr>
             <td>Coste: </td>
-            <td><input name="cost" type="text">
-            </td>
+            <td><input name="cost" type="text"></td>
         </tr>
         <tr>
             <td><input name="upload" type="submit" value="Subir"></td>
@@ -134,5 +132,37 @@ class View{
             echo '
 <option value="'.$row[0].'">'.$row[1].'</option>';
         }
+    }
+
+    public static function registerUserOption() {
+        echo '
+<a href="register.php">Registrarse</a>';
+    }
+
+    public static function registerForm(){
+        echo '
+<form action="checkRegister.php" method="POST">
+    <table>
+        <tr>
+            <td>Usuario</td>
+            <td><input type="text" name="userName" required></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="email" name="email" required></td>
+        </tr>
+        <tr>
+            <td>Contraseña</td>
+            <td><input type="password" name="password" required></td>
+        </tr>
+        <tr>
+            <td>Reescribir contraseña</td>
+            <td><input type="password" name="retypePassword" required></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="Registrarse" name="register"></td>
+        </tr>
+    </table>
+</form>';
     }
 }

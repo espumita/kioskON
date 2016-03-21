@@ -19,10 +19,10 @@ class _CreateMagazine extends PHPUnit_Framework_TestCase{
         self::$dbConnection = new DataBaseConnection();
         self::$dbConnection->start();
         $time= time();
-        (new DataBaseInsert( self::$dbConnection->connection()))->inTableUsers(new User("userTest",new Password("1234".$time)),$time);
+        (new DataBaseInsert( self::$dbConnection->connection()))->inTableUsers(new User("userTest","userTest@domain.test",new Password("1234".$time)),$time);
         $login= (new Login(self::$dbConnection,"userTest","1234"));
         $login->check();
-        self::$userId = $login->userId();
+        self::$userId = $login->userInfo()['id'];
 
     }
 

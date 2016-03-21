@@ -28,5 +28,5 @@ if((new DataBaseSelect($dbConnection->connection()))->checkMagazineName($_POST['
 if((new DataBaseInsert($dbConnection->connection()))->inTableMagazines(new Magazine($_POST['magazine'],$_SESSION['id'],$_POST['periodicity']))){
     (new Redirection())->to("index.php?MagazineCreation=OK");
 }
-
+$dbConnection->quit();
 (new Redirection())->to("index.php?BadCreation=wrongFormInfo");

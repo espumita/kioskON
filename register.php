@@ -6,9 +6,8 @@ use kioskon\application\utils\Check;
 use kioskon\application\utils\Redirection;
 
 session_start();
-if(!Check::session()) (new Redirection())->to("index.php?BadLogin=badLogin");
+if(Check::session()) (new Redirection())->to("index.php?BadLogin=badLogin");
 
-View::pageHeader('Crear Revista');
-View::logOut();
-View::createMagazineForm();
+View::pageHeader('Registrarse');
+View::registerForm();
 View::pageFooter();

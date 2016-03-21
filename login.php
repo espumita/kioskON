@@ -22,7 +22,9 @@ if(!$dbConnection->start()) (new Redirection())->to("index.php?notConnection");
 $login = new Login($dbConnection,$_POST['user'],$_POST['pass']);
 if($login->check()){
     $_SESSION['user'] = $_POST['user'];
-    $_SESSION['id'] = $login->userId();
+    $userInfo = $login->userInfo();
+    $_SESSION['id'] = $userInfo['id'];
+    $_SESSION['email'] = $userInfo['email'];
     (new Redirection())->to("index.php?Login=OK");
 }
 

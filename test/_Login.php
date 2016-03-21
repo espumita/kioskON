@@ -17,22 +17,22 @@ class _Login extends PHPUnit_Framework_TestCase{
     }
 
     public function test_get_user_name(){
-        $user = new User("userTest",new Password("1234"+time()));
+        $user = new User("userTest","userTest@domain.test",new Password("1234"+time()));
         $this->assertEquals($user->name(),"userTest");
+        $this->assertEquals($user->email(),"userTest@domain.test");
     }
 
     public function test_get_md5_hashed_password_and_current_time(){
         $time = time();
-        $user = new User("userTest",new Password("1234".$time));
+        $user = new User("userTest","userTest@domain.test",new Password("1234".$time));
         $this->assertEquals($user->hashedPassword(),md5("1234".$time));
     }
-
 
     public function test_insert_and_delete_one_user(){
         $dbConnection = new DataBaseConnection();
         $dbConnection->start();
         $time= time();
-        $this->assertTrue((new DataBaseInsert($dbConnection->connection()))->inTableUsers(new User("userTest",new Password("1234".$time)),$time));
+        $this->assertTrue((new DataBaseInsert($dbConnection->connection()))->inTableUsers(new User("userTest","userTest@domain.test",new Password("1234".$time)),$time));
         $this->assertTrue((new DataBaseDelete($dbConnection->connection()))->userWithName("userTest"));
         $dbConnection->quit();
     }
@@ -41,8 +41,8 @@ class _Login extends PHPUnit_Framework_TestCase{
         $dbConnection = new DataBaseConnection();
         $dbConnection->start();
         $time= time();
-        $this->assertTrue((new DataBaseInsert($dbConnection->connection()))->inTableUsers(new User("userTest",new Password("1234".$time)),$time));
-        $this->assertFalse((new DataBaseInsert($dbConnection->connection()))->inTableUsers(new User("userTest",new Password("1234".$time)),$time));
+        $this->assertTrue((new DataBaseInsert($dbConnection->connection()))->inTableUsers(new User("userTest","userTest@domain.test",new Password("1234".$time)),$time));
+        $this->assertFalse((new DataBaseInsert($dbConnection->connection()))->inTableUsers(new User("userTest","userTest@domain.test",new Password("1234".$time)),$time));
         $this->assertTrue((new DataBaseDelete($dbConnection->connection()))->userWithName("userTest"));
         $this->assertFalse((new DataBaseDelete($dbConnection->connection()))->userWithName("userTest"));
         $dbConnection->quit();
@@ -52,11 +52,11 @@ class _Login extends PHPUnit_Framework_TestCase{
         $dbConnection = new DataBaseConnection();
         $dbConnection->start();
         $time= time();
-        $this->assertTrue((new DataBaseInsert($dbConnection->connection()))->inTableUsers(new User("userTest",new Password("1234".$time)),$time));
+        $this->assertTrue((new DataBaseInsert($dbConnection->connection()))->inTableUsers(new User("userTest","userTest@domain.test",new Password("1234".$time)),$time));
         $this->assertTrue((new Login($dbConnection,"userTest","1234"))->check());
         $this->assertFalse((new Login($dbConnection,"userTest","12345"))->check());
         $this->assertFalse((new Login($dbConnection,"userTest5","1234"))->check());
-        $this->assertFalse((new Login($dbConnection,"",""))->check());
+        $this->assertFalse((new Login($dbConnection,"","",""))->check());
         $this->assertTrue((new DataBaseDelete($dbConnection->connection()))->userWithName("userTest"));
         $dbConnection->quit();
 

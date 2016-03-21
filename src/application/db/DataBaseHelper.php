@@ -7,6 +7,7 @@ class DataBaseHelper{
     public $USER_NAME = 'userName';
     public $PASSWORD = 'password';
     public $CREATION_TIME = 'creationTime';
+    public $EMAIL = 'email';
 
     public $TABLE_MAGAZINES = 'magazines';
     public $MAGAZINE_ID = '_id';

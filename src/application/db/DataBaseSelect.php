@@ -22,14 +22,14 @@ class DataBaseSelect extends DataBaseHelper{
         return false;
     }
 
-    public function userId(User $user) {
-        if($select =  $this->dbConnection->query("SELECT ".$this->USER_ID." FROM ".$this->TABLE_USERS.
-            " WHERE ".$this->USER_NAME." ='".$user->name().
-            "' AND ".$this->PASSWORD." ='".$user->hashedPassword()."'")){
+    public function userInfo($userName,$userHashedPassword) {
+        if($select =  $this->dbConnection->query("SELECT ".$this->USER_ID.",".$this->EMAIL." FROM ".$this->TABLE_USERS.
+            " WHERE ".$this->USER_NAME." ='".$userName.
+            "' AND ".$this->PASSWORD." ='".$userHashedPassword."'")){
 
             if(mysqli_num_rows($select)){
                 $row = mysqli_fetch_assoc($select);
-                return $row[$this->USER_ID];
+                return [ 'id' => $row[$this->USER_ID], 'email' => $row[$this->EMAIL] ];
             }
         }
         return -1;
@@ -48,6 +48,22 @@ class DataBaseSelect extends DataBaseHelper{
     public function checkMagazineName($magazineName) {
         if($select =  $this->dbConnection->query("SELECT * FROM ".$this->TABLE_MAGAZINES.
             " WHERE ".$this->MAGAZINE_NAME." = '$magazineName'")){
+            return mysqli_num_rows($select) == 1 ? true : false;
+        }
+        return false;
+    }
+
+    public function checkUserName($userName) {
+        if($select =  $this->dbConnection->query("SELECT * FROM ".$this->TABLE_USERS.
+            " WHERE ".$this->USER_NAME." = '$userName'")){
+            return mysqli_num_rows($select) == 1 ? true : false;
+        }
+        return false;
+    }
+
+    public function checkUserEmail($email) {
+        if($select =  $this->dbConnection->query("SELECT * FROM ".$this->TABLE_USERS.
+            " WHERE ".$this->EMAIL." = '$email'")){
             return mysqli_num_rows($select) == 1 ? true : false;
         }
         return false;

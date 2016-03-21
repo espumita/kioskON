@@ -27,11 +27,11 @@ class Login {
     }
 
     public function checkIfPasswordIsCorrect($userCreationTime) {
-        $this->userId =  (new DataBaseSelect($this->dbConnection->connection()))->userId(new User($this->userName, new Password($this->password . $userCreationTime)));
+        $this->userId =  (new DataBaseSelect($this->dbConnection->connection()))->userInfo($this->userName,(new Password($this->password.$userCreationTime))->md5Hash());
         return $this->userId  > 0;
     }
 
-    public function userId() {
+    public function userInfo() {
         return $this->userId;
     }
 }

@@ -9,7 +9,7 @@ class Check{
     }
 
     public static function session(){
-        return isset($_SESSION['user']) && isset($_SESSION['id']);
+        return isset($_SESSION['user']) && isset($_SESSION['id']) && isset($_SESSION['email']);
     }
 
     public static function files($inputFile){
@@ -25,5 +25,9 @@ class Check{
 
     public static function fileExtension($inputFile, $extensions) {
         return (in_array(pathinfo($_FILES[$inputFile]['name'], PATHINFO_EXTENSION), $extensions)) ;
+    }
+
+    public static function ifPasswordsAreEquals() {
+        return $_POST['password'] === $_POST['retypePassword'];
     }
 }

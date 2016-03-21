@@ -34,4 +34,5 @@ if((new DataBaseInsert($dbConnection->connection()))->inTableIssues(new Issue(
     (new File("userFile"))->content(),
     $_POST["cost"])))(new Redirection())->to("index.php?issueInsert=Ok");
 
+$dbConnection->quit();
 (new Redirection())->to("index.php?BadIssueInsert=wrongFormInfo");

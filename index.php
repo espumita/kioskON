@@ -17,5 +17,8 @@ if(Check::session()){
     }
     View::issuesUploadOption();
 
-}else View::loginForm();
+}else{
+    View::loginForm();
+    View::registerUserOption();
+}
 View::pageFooter();
