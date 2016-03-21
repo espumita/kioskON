@@ -13,4 +13,14 @@ class DataBaseHelper{
     public $MAGAZINE_NAME = "magazineName";
     public $OWNER = "owner";
     public $PERIODICITY = "periodicity";
+
+    public $TABLE_ISSUES = "issues";
+    public $ISSUE_ID = '_id';
+    public $FILE_NAME ="fileName";
+    public $ISSUES_FK = "magazines__fk";
+    public $ISSUE_NUMBER = "issueNumber";
+    public $FILE_SIZE = "fileSize";
+    public $PUBLICATION_DATE = "publicationDate";
+    public $FILE_CONTENT = "fileContent";
+    public $UNIT_COST = "unitCost";
 }

@@ -1,6 +1,7 @@
 <?php
 namespace kioskon\application\db;
 
+use kioskon\model\Issue;
 use kioskon\model\Magazine;
 use kioskon\model\User;
 
@@ -30,5 +31,23 @@ class DataBaseInsert extends DataBaseHelper{
                 $magazine->magazineName()."','".
                 $magazine->owner()."','".
                 $magazine->periodicity()."')");
+    }
+
+    public function inTableIssues(Issue $newIssue) {
+        return $this->dbConnection->query("INSERT INTO ".$this->TABLE_ISSUES." (".
+            $this->FILE_NAME.", ".
+            $this->ISSUES_FK.", ".
+            $this->ISSUE_NUMBER.", ".
+            $this->FILE_SIZE.",".
+            $this->PUBLICATION_DATE.", ".
+            $this->FILE_CONTENT.", ".
+            $this->UNIT_COST.") VALUES ('".
+                $newIssue->fileName()."','".
+                $newIssue->magazinesFk()."','".
+                $newIssue->issueNumber()."','".
+                $newIssue->fileSize()."','".
+                $newIssue->publicationDate()."','".
+                $newIssue->fileContent()."','".
+                $newIssue->unitCost()."')");
     }
 }
