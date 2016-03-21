@@ -17,7 +17,7 @@ class _Register extends PHPUnit_Framework_TestCase {
        $this->assertTrue((new RegisterFilter("admi1"))->check());
        $this->assertFalse((new RegisterFilter(""))->check());
    }
-    
+
   public function test_email_filter() {
       $this->assertTrue((new RegisterFilter("test@test.test"))->checkEmail());
       $this->assertFalse((new RegisterFilter("@test.test"))->checkEmail());

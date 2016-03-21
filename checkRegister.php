@@ -15,7 +15,7 @@ if(Check::session()) (new Redirection())->to("index.php?BadLogin=badLogin");
 
 if(!Check::post('userName') || !Check::post('email') || !Check::post('password') || !Check::post('retypePassword'))(new Redirection())->to("index.php?BadForm=badForm");
 
-if(!(new RegisterFilter($_POST['user']))->check() || !(new RegisterFilter($_POST['pass']))->check() || !!(new RegisterFilter($_POST['email']))->checkEmail()){
+if(!(new RegisterFilter($_POST['userName']))->check() || !(new RegisterFilter($_POST['password']))->check() || !(new RegisterFilter($_POST['email']))->checkEmail()){
     (new Redirection())->to("index.php?BadRegister=DataError");
 }
 if(!Check::ifPasswordsAreEquals()) (new Redirection())->to("index.php?BadForm=wrongPasswords");
