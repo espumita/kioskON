@@ -9,5 +9,7 @@ session_start();
 if(Check::session()) (new Redirection())->to("index.php?BadLogin=badLogin");
 
 View::pageHeader('Registrarse');
+View::userNoLoggedNavigationBar();
 View::registerForm();
+View::carousel();
 View::pageFooter();

@@ -2,7 +2,9 @@
 
 namespace kioskon\application\ui;
 
+use kioskon\application\db\DataBaseConnection;
 use kioskon\application\db\DataBaseSelect;
+use kioskon\application\utils\Check;
 
 class View{
 
@@ -11,7 +13,15 @@ class View{
 <html>
 <head>
     <title>'.$tittle.'</title>
-    <meta charset="utf-8">
+	<meta charset="UTF-8">
+	<link rel="icon" href="/img/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/styleLogin.css">
+	<script src="/js/scripts.js"></script>
+	<script src="/js/jquery.min.js"></script>
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+	<script src="/js/bootstrap.min.js"></script>
 </head>
 <body>';
     }
@@ -22,40 +32,208 @@ class View{
 </html>';
     }
 
-    public static function loginForm(){
+    public static function userNoLoggedNavigationBar(){
+        echo'
+<div class="navbar-wrapper">
+	<div class="container-fluid">
+		<nav class="navbar navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<img alt="" src="/img/logo_small.png">
+
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="index.php" class="">Principal</a></li>
+
+							<li><a href="#" class="">Periódicos</a></li>
+							<li><a href="#" class="">Revistas</a></li>
+							<li class=" dropdown"><a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Próximos Lanzamientos<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Periódicos</a></li>
+									<li><a href="#">Revistas</a></li>
+								</ul>
+							</li>
+
+							<div class="pull-right">
+							<!-- en action va la url donde iría el resultado de búsqueda -->
+						        <form class="navbar-form" role="search" action="#">
+						        <div class="input-group">
+						            <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+						            <div class="input-group-btn">
+						                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+						            </div>
+						        </div>
+						        </form>
+			        		</div>
+					</ul>
+
+					<ul class="nav navbar-nav pull-right">
+
+						<li class=" dropdown"><a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Accede a tu perfil<span class="caret"></span></a>
+							<ul class="dropdown-menu">      
+                                <li><a href="login.php">Iniciar Sesión</a></li>
+                                <li><a href="register.php">Registrarse</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</div>
+</div>';
+    }
+
+    public static function userLoggedNavigationBar(){
         echo '
-<form action="login.php" method="post">
-    <ul>
-        <li>Usuario: <input type="text" name="user"></li>
-        <li>Contraseña <input type="password" name="pass"></li>
-        <li><input type="submit" value="login"></li>
-    </ul>
-</form>';
+<div class="navbar-wrapper">
+	<div class="container-fluid">
+		<nav class="navbar navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<img alt="" src="/img/logo_small.png">
+
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="index.php" class="">Principal</a></li>
+
+							<li class=" dropdown"><a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gestionar <span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="#"></a></li>
+									<li><a href="uploadNewIssue.php">Nueva entrega</a></li>
+									<li><a href="#">Modificar entrega</a></li>
+									<li><a href="#">Eliminar entrega</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="createNewMagazine.php">Añadir Revista</a></li>
+									<li><a href="#">Modificar Revista</a></li>
+									<li><a href="#">Eliminar Revista</a></li>
+                                    <li role="separator" class="divider"></li>
+									<li><a href="#">Añadir Suscripción</a></li>
+									<li><a href="#">Modificar Suscripción</a></li>
+									<li><a href="#">Eliminar Suscripción</a></li>
+								</ul>
+							</li>
+							<li class=" dropdown"><a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Calendario<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Lanzamiento</a></li>
+								</ul>
+							</li>
+
+							<div class="pull-right">
+						        <form class="navbar-form" role="search" action="./searchWithFilter.html">
+						        <div class="input-group">
+						            <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+						            <div class="input-group-btn">
+						                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+						            </div>
+						        </div>
+						        </form>
+			        		</div>
+					</ul>
+
+					<ul class="nav navbar-nav pull-right">
+
+						<li class=" dropdown"><a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bienvenido '.$_SESSION['user'].'<span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Configurar Perfil</a></li>
+								<li><a href="logout.php">Desconectarse</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</div>
+</div>';
+    }
+
+    public static function carousel(){
+        echo '
+<div class="carousel fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
+  <div class="carousel-inner">
+    <div class="item slides active">
+      <div class="slide-1">
+          <div class="overlay"></div>
+      </div>
+     
+    </div>
+  </div>
+</div>';
+    }
+
+    public static function loginForm(){
+        echo'
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pr-wrap">
+                <div class="pass-reset">
+                    <label>
+                        Introduce tu email</label>
+                    <input type="email" placeholder="Email" />
+                    <input type="submit" value="Submit" class="pass-reset-submit btn btn-success btn-sm" />
+                </div>
+            </div>
+            <div class="wrap">
+                <p class="form-title">
+                    Inicia sesión</p>
+                <form action="checkLogin.php" class="login" method="post">
+                    <input type="text" placeholder="Usuario" name="user"/>
+                    <input type="password" placeholder="Contraseña" name="pass"/>
+                    <input type="submit" value="Iniciar Sesión" class="btn btn-success btn-sm" />
+                    <div class="remember-forgot">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="checkbox">
+                                    <label>
+                                        <div class="remember"><input type="checkbox" />
+                                        Recordarme</div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 forgot-pass-content">
+                                <a href="javascript:void(0)" class="forgot-pass">¿Olvidaste la contraseña?</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>';
     }
 
     public static function logOut(){
         echo '
-<p>Loged as: '.$_SESSION['user'].' and user id is:'.$_SESSION['id'].' and email is '.$_SESSION['email'].'</p>
-</br>
-<a href="logout.php">Logout</a>
-</br>
-</br>';
-    }
-
-    public static function createMagazineOption() {
-        echo '
-<a href="createNewMagazine.php">Crear nueva revista</a>';
+<li><a href="logout.php">Logout</a></li>';
     }
 
     public static function createMagazineForm() {
-        echo '
-<form action="checkCreateNewMagazine.php" method="post">
-    <ul>
-        <li>Nombre de la revista: <input type="text" name="magazine"></li>
-        <li>Número de entregas anuales: <input type="text" name="periodicity"></li>
-        <li><input type="submit" value="Crear"></li>
-    </ul>
-</form>';
+        echo'
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pr-wrap">
+                <div class="pass-reset">
+                    <label>
+                        Introduce tu email</label>
+                    <input type="email" placeholder="Email" />
+                    <input type="submit" value="Submit" class="pass-reset-submit btn btn-success btn-sm" />
+                </div>
+            </div>
+            <div class="wrap">
+                <p class="form-title">
+                    Añadir revista</p>
+                <form action="checkCreateNewMagazine.php" class="login" method="post">
+                    <input type="text" placeholder="Nombre de la revista" name="magazine"/>
+                    <input type="text" placeholder="Número de entregas anuales" name="periodicity"/>
+                    <input type="submit" value="Añadir" class="btn btn-success btn-sm" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>';
     }
 
     public static function userCurrentMagazinesList($dbConnection) {
@@ -89,41 +267,31 @@ class View{
 </tr>';
     }
 
-    public static function issuesUploadOption() {
-        echo'
-<a href="uploadNewIssue.php">Subir nueva entrega de revista</a>
-        ';
-    }
-
     public static function issuesUploadForm($dbConnection) {
         echo'
-<form method="post" enctype="multipart/form-data" action="checkUploadIssue.php">
-    <table>
-        <tr>
-            <td><input name="userFile" type="file"></td>
-        </tr>
-    </table>
-    <table>
-        <tr>
-            <td> Revista: </td>
-            <td><select name="magazines">';
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="wrap">
+                <p class="form-title">
+                    Nueva entrega</p>
+                <form enctype="multipart/form-data" action="checkUploadIssue.php" class="login" method="post">
+                    <input name="userFile" type="file">
+                    <br>
+                    <select name="magazines">';
         self::deployMagazinesOptions($dbConnection);
         echo '
-            </select></td>
-        </tr>
-        <tr>
-            <td>Número: </td>
-            <td><input name="number" type="text""></td>
-        </tr>
-        <tr>
-            <td>Coste: </td>
-            <td><input name="cost" type="text"></td>
-        </tr>
-        <tr>
-            <td><input name="upload" type="submit" value="Subir"></td>
-        </tr>
-    </table>
-</form>';
+                    </select>
+                    <br>
+                    <br>
+                    <input type="text" placeholder="Número" name="number"/>
+                    <input type="text" placeholder="Coste" name="cost"/>
+                    <input type="submit" value="Publicar" class="btn btn-success btn-sm" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>';
     }
 
     private static function deployMagazinesOptions($dbConnection) {
@@ -134,35 +302,32 @@ class View{
         }
     }
 
-    public static function registerUserOption() {
-        echo '
-<a href="register.php">Registrarse</a>';
-    }
-
     public static function registerForm(){
-        echo '
-<form action="checkRegister.php" method="POST">
-    <table>
-        <tr>
-            <td>Usuario</td>
-            <td><input type="text" name="userName" required></td>
-        </tr>
-        <tr>
-            <td>Email</td>
-            <td><input type="email" name="email" required></td>
-        </tr>
-        <tr>
-            <td>Contraseña</td>
-            <td><input type="password" name="password" required></td>
-        </tr>
-        <tr>
-            <td>Reescribir contraseña</td>
-            <td><input type="password" name="retypePassword" required></td>
-        </tr>
-        <tr>
-            <td colspan="2"><input type="submit" value="Registrarse" name="register"></td>
-        </tr>
-    </table>
-</form>';
+        echo'
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pr-wrap">
+                <div class="pass-reset">
+                    <label>
+                        Introduce tu email</label>
+                    <input type="email" placeholder="Email" />
+                    <input type="submit" value="Submit" class="pass-reset-submit btn btn-success btn-sm" />
+                </div>
+            </div>
+            <div class="wrap">
+                <p class="form-title">
+                    Registrarse</p>
+                <form action="checkRegister.php" class="login" method="post">
+                    <input type="text" placeholder="Usuario" name="userName"/>
+                    <input type="text" placeholder="Email" name="email"/>
+                    <input type="password" placeholder="Contraseña" name="password"/>
+                    <input type="password" placeholder="Reescribir contraseña" name="retypePassword"/>
+                    <input type="submit" value="Registrarse" class="btn btn-success btn-sm" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>';
     }
 }
