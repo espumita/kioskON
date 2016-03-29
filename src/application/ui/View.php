@@ -503,4 +503,66 @@ echo'
     </div>
 </div>';
     }
+
+    public static function cosas(){
+        echo'
+
+    <div style="background-color: #2E2E2E; padding:30px 0px 30px 0px">
+
+    <div class="row" style="margin: 20px 0px 20px 0px">
+        <div class="col-md-2"></div>
+        <div class="col-md-2">
+            <img src="img/abc.png" width="150" height="220">            
+        </div>
+        <div class="col-md-2">
+            <img src="img/elpais.jpg" width="150" height="220">
+        </div>
+        <div class="col-md-2">
+            <img src="img/lavanguardia.png" width="150" height="220">
+        </div>    
+        <div class="col-md-2">
+            <img src="img/larazon.png" width="150" height="220">
+        </div>    
+    </div>
+
+    <div class="row" style="margin: 20px 0px 20px 0px">
+        <div class="col-md-2"></div> 
+        <div class="col-md-2">
+            <img src="img/computer.png" width="150" height="220">            
+        </div>
+        <div class="col-md-2">
+            <img src="img/fotogramas.png" width="150" height="220">
+        </div>
+        <div class="col-md-2">
+            <img src="img/onehacker.png" width="150" height="220">
+        </div> 
+        <div class="col-md-2">
+            <img src="img/national.png" width="150" height="220">
+        </div>       
+    </div>
+
+    <div class="row"  style="margin: 20px 0px 20px 0px">
+        <div class="col-md-2"></div> 
+        <div class="col-md-2">
+            <img src="img/bikes.png" width="150" height="220">            
+        </div>
+        <div class="col-md-2">
+            <img src="img/motor.png" width="150" height="220">
+        </div>
+        <div class="col-md-2">
+            <img src="img/muyhistoria.png" width="150" height="220">
+        </div>   
+        <div class="col-md-2">
+            <img src="img/eljueves.png" width="150" height="220">
+        </div>     
+    </div>
+    </div>';
+    }
+
+    public static function button()
+    {
+        echo'    <div style="padding:30px 0px 30px 50px;">
+        <input type="button" class="btn btn-primary" value="Comprar ejemplar" onclick="window.open(\'https://www.paypal.com/signin/?country.x=ES&locale.x=es_ES\')" />
+    </div>';
+    }
 }

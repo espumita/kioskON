@@ -11,5 +11,6 @@ if(Check::session()){
 }else{
     View::userNoLoggedNavigationBar();
 }
-View::carousel();
+View::cosas();
+View::button();
 View::pageFooter();
