@@ -109,7 +109,7 @@ class View{
 									<li role="separator" class="divider"></li>
 									<li><a href="createNewMagazine.php">Añadir Revista</a></li>
 									<li><a href="#">Modificar Revista</a></li>
-									<li><a href="#">Eliminar Revista</a></li>
+									<li><a href="eliminarRevista.php">Eliminar Revista</a></li>
                                     <li role="separator" class="divider"></li>
 									<li><a href="#">Añadir Suscripción</a></li>
 									<li><a href="#">Modificar Suscripción</a></li>
@@ -333,8 +333,9 @@ class View{
 </div>';
     }
 
-    public static function tarifas(){
-        echo'
+    public static function tarifas()
+    {
+        echo '
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -348,13 +349,13 @@ class View{
             </div>
             <div class="wrap"><br><br><br><br><br><br>';
         header("Content-Type: text/html;charset=utf-8");
-        if (new mysqli("db4free.net", "kioskon", "kioskon", "kioskon")){
+        if (new mysqli("db4free.net", "kioskon", "kioskon", "kioskon")) {
             $conexion = new mysqli("db4free.net", "kioskon", "kioskon", "kioskon");
             $acentos = $conexion->query("SET NAMES 'utf8'");
             $query_magazines = "select * from magazines";
-            $result_magazines = $conexion -> query($query_magazines);
+            $result_magazines = $conexion->query($query_magazines);
 
-            echo'<table align="center" width="620" class="login">
+            echo '<table align="center" width="620" class="login">
                 <tr align="center">
                     <td align="left" width="150"><font size=5 color="blue" face="Arial"><u><b>Nombre</b></u></font></td>
                     <td align="right" width="150"><font size=5 color="blue" face="Arial"><u><b>Unidad</b></u></font></td>
@@ -364,86 +365,139 @@ class View{
                 </tr>
                 <tr height=20></tr>';
 
-            while($query_result_magazines = $result_magazines->fetch_array()) {
+            while ($query_result_magazines = $result_magazines->fetch_array()) {
                 $semanal = 0;
                 $nombre_magazine = $query_result_magazines["magazineName"];
                 $id_magazine = $query_result_magazines["_id"];
                 $query_issues = "select * from issues where magazines__fk='$id_magazine'";
-                $result_issues = $conexion -> query($query_issues);
-                while($query_result_issues = $result_issues->fetch_array()) {
+                $result_issues = $conexion->query($query_issues);
+                while ($query_result_issues = $result_issues->fetch_array()) {
                     $mensual = NULL;
                     $semestral = NULL;
                     $anual = NULL;
                     $coste = $query_result_issues["unitCost"];
                     $query_discounts = "select * from discounts2 where magazines_fk='$id_magazine'";
-                    $result_discounts = $conexion ->query($query_discounts);
-                    while($query_result_discounts = $result_discounts->fetch_array()){
+                    $result_discounts = $conexion->query($query_discounts);
+                    while ($query_result_discounts = $result_discounts->fetch_array()) {
                         $dmensual = $query_result_discounts["discountMensual"];
                         $dsemestral = $query_result_discounts["discountSemestral"];
                         $danual = $query_result_discounts["discountAnual"];
-                        if ($dmensual != NULL){
+                        if ($dmensual != NULL) {
                             $semanal = 1;
-                            $mensual = ($coste - (($coste*$dmensual)/100))*4;
-                        }else{
+                            $mensual = ($coste - (($coste * $dmensual) / 100)) * 4;
+                        } else {
                             $mensual = NULL;
                         }
-                        if ($dsemestral != NULL){
-                            if ($semanal == 1){
-                                $semestral = (($coste - (($coste*$dsemestral)/100))*4)*6;
+                        if ($dsemestral != NULL) {
+                            if ($semanal == 1) {
+                                $semestral = (($coste - (($coste * $dsemestral) / 100)) * 4) * 6;
                                 $semanal = 0;
-                            }else{
-                                $semestral = ($coste - (($coste*$dsemestral)/100))*6;
+                            } else {
+                                $semestral = ($coste - (($coste * $dsemestral) / 100)) * 6;
                             }
-                        }else{
+                        } else {
                             $semestral = NULL;
                         }
-                        if ($danual != NULL){
-                            if ($semanal == 1){
-                                $anual = (($coste - (($coste*$danual)/100))*4)*12;
+                        if ($danual != NULL) {
+                            if ($semanal == 1) {
+                                $anual = (($coste - (($coste * $danual) / 100)) * 4) * 12;
                                 $semanal = 0;
-                            }else{
-                                $anual = ($coste - (($coste*$danual)/100))*12;
+                            } else {
+                                $anual = ($coste - (($coste * $danual) / 100)) * 12;
                             }
-                        }else{
+                        } else {
                             $anual = NULL;
                         }
                     }
-                    if ($mensual != NULL){
+                    if ($mensual != NULL) {
                         $eurom = ' €';
                         $mensual = number_format($mensual, 2, ",", ".");
-                    }else{
+                    } else {
                         $eurom = '';
                         $mensual = '--';
                     }
-                    if ($semestral != NULL){
+                    if ($semestral != NULL) {
                         $euros = ' €';
                         $semestral = number_format($semestral, 2, ",", ".");
-                    }else{
+                    } else {
                         $euros = '';
                         $semestral = '--';
                     }
-                    if ($anual != NULL){
+                    if ($anual != NULL) {
                         $euroa = ' €';
                         $anual = number_format($anual, 2, ",", ".");
-                    }else{
+                    } else {
                         $euroa = '';
                         $anual = '--';
                     }
-                    echo'<tr align="center">
-                        <td align="left"><font size=4 color="navy" face="Times New Roman">'.$nombre_magazine.'</font></td>
-                        <td align="right"><font size=4>'.number_format($coste, 2, ",", ".").' €'.'</font></td>
-                        <td align="right"><font size=4>'.$mensual.$eurom.'</font></td>
-                        <td align="right"><font size=4>'.$semestral.$euros.'</font></td>
-                        <td align="right"><font size=4>'.$anual.$euroa.'</font></td>
+                    echo '<tr align="center">
+                        <td align="left"><font size=4 color="navy" face="Times New Roman">' . $nombre_magazine . '</font></td>
+                        <td align="right"><font size=4>' . number_format($coste, 2, ",", ".") . ' €' . '</font></td>
+                        <td align="right"><font size=4>' . $mensual . $eurom . '</font></td>
+                        <td align="right"><font size=4>' . $semestral . $euros . '</font></td>
+                        <td align="right"><font size=4>' . $anual . $euroa . '</font></td>
                         </tr>';
                 }
             }
             echo '</table>';
             $conexion->close();
-        }else{
+        } else {
             echo "Error de conexión con la base de datos";
         }
-            echo'
+        echo '
+            </div>
+        </div>
+    </div>
+</div>';
+    }
+
+    public static function deleteMagazineForm(){
+        echo '
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pr-wrap">
+                <div class="pass-reset">
+                    <label>
+                        Tabla</label>
+                    <input type="email" placeholder="Email" />
+                    <input type="submit" value="Submit" class="pass-reset-submit btn btn-success btn-sm" />
+                </div>
+            </div>
+            <div class="wrap"><br><br><br><br><br><br>';
+        echo '<div align="center">
+<br>';
+header("Content-Type: text/html;charset=utf-8");
+if (new mysqli("db4free.net", "kioskon", "kioskon", "kioskon"))
+{
+    $conexion = new mysqli("db4free.net", "kioskon", "kioskon", "kioskon");
+    $acentos = $conexion->query("SET NAMES ,'utf8'");
+
+    echo '<FORM class="login" METHOD="POST" ACTION="delete.php"><font size=5>Nombre Revista</font><br><p></p>';
+
+    $query = "select magazineName from magazines where owner=".$_SESSION['id']." order by magazineName";
+    $result = $conexion -> query($query);
+
+    echo '<select name=magazine><p></p>';
+
+    while($query_result = $result->fetch_array()) {
+        echo '<option>'.$query_result["magazineName"];
+    }
+
+    $result->free_result();
+
+    $conexion->close();
+}else{
+    echo "Error de conexión con la base de datos";
+}
+echo'
+</select>
+<br>
+<p></p>
+<INPUT TYPE="SUBMIT" value="Eliminar Revista">
+</FORM>
+</div>';
+        echo '
             </div>
         </div>
     </div>
