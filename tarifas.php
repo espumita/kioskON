@@ -8,7 +8,11 @@ use kioskon\application\utils\Redirection;
 session_start();
 
 View::pageHeader('Tarifas');
-View::userLoggedNavigationBar();
+if(Check::session()){
+    View::userLoggedNavigationBar();
+}else{
+    View::userNoLoggedNavigationBar();
+}
 View::tarifas();
 View::carousel();
 View::pageFooter();
