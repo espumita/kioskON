@@ -45,6 +45,19 @@ class DataBaseSelect extends DataBaseHelper{
         }
     }
 
+    public function allUserIssues($id) {
+        $string = "SELECT ".$this->ISSUE_NUMBER.",".$this->FILE_NAME.",".$this->ISSUES_FK.",".$this->TABLE_ISSUES.".".$this->ISSUE_ID.",".$this->UNIT_COST.",".$this->TABLE_MAGAZINES.".".$this->MAGAZINE_NAME.
+            " FROM ".$this->TABLE_ISSUES.
+            " INNER JOIN " . $this->TABLE_MAGAZINES .
+            " ON ".$this->TABLE_MAGAZINES.".".$this->MAGAZINE_ID."=".$this->TABLE_ISSUES.".".$this->ISSUES_FK.
+            " WHERE ".$this->TABLE_MAGAZINES.".".$this->OWNER."='$id'";
+        if( $select = $this->dbConnection->query($string)){
+
+            if(mysqli_num_rows($select)) return $select;
+            return -1;
+        }
+    }
+
     public function checkMagazineName($magazineName) {
         if($select =  $this->dbConnection->query("SELECT * FROM ".$this->TABLE_MAGAZINES.
             " WHERE ".$this->MAGAZINE_NAME." = '$magazineName'")){

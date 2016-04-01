@@ -16,6 +16,7 @@ if(Check::session()){
         $dbConnection->quit();
     }
     View::issuesUploadOption();
+    View::issuesModifyOption();
 
 }else{
     View::loginForm();
