@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__.'/vendor/autoload.php';
+use kioskon\application\db\DataBaseConnection;
 use kioskon\application\ui\View;
 use kioskon\application\utils\Check;
 
@@ -16,10 +17,9 @@ if(Check::session()){
     }
     View::issuesUploadOption();
     View::issuesModifyOption();
-    View::userLoggedNavigationBar();
+
 }else{
-    View::userNoLoggedNavigationBar();
+    View::loginForm();
+    View::registerUserOption();
 }
-View::cosas();
-View::button();
 View::pageFooter();

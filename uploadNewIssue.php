@@ -10,11 +10,10 @@ session_start();
 if(!Check::session()) (new Redirection())->to("index.php?BadLogin=badLogin");
 
 View::pageHeader('Subir nueva entrega');
-View::userLoggedNavigationBar();
+View::logOut();
 
 $dbConnection = new DataBaseConnection();
 if(!$dbConnection->start()) (new Redirection())->to("index.php?BadConnection=notConnection");
 
 View::issuesUploadForm($dbConnection->connection());
-View::carousel();
 View::pageFooter();
