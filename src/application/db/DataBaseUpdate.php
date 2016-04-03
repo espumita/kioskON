@@ -1,6 +1,8 @@
 <?php
 namespace kioskon\application\db;
 
+use kioskon\model\User;
+
 class DataBaseUpdate extends DataBaseHelper
 {
 
@@ -31,6 +33,15 @@ class DataBaseUpdate extends DataBaseHelper
         $select =  $this->dbConnection->query($string);
         if(!$select) echo $this->dbConnection -> error;
         return $select;
+    }
+
+    public function inTableUsers(User $newUser, $time) {
+        return $this->dbConnection->query("UPDATE ".$this->TABLE_USERS." SET ".
+            $this->USER_NAME."='".$newUser->name()."', ".
+            $this->PASSWORD."='".$newUser->hashedPassword()."', ".
+            $this->CREATION_TIME."='".$time."', ".
+            $this->EMAIL."='".$newUser->email()."'".
+            " WHERE ".$this->USER_ID."='".$_SESSION['id']."'");
     }
 
 }

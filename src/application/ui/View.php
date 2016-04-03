@@ -138,7 +138,7 @@ class View{
 
 						<li class=" dropdown"><a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bienvenido '.$_SESSION['user'].'<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Configurar Perfil</a></li>
+								<li><a href="editUser.php">Configurar Perfil</a></li>
 								<li><a href="logout.php">Desconectarse</a></li>
 							</ul>
 						</li>
@@ -621,6 +621,39 @@ echo'
     <td>'.$row['unitCost'].'</td>
     <td><input name="botonListaModificar" type="submit" value="Modificar '.$row['_id'].'"></td>
 </tr>';
+    }
+
+    public static function modifyProfileForm() {
+        echo'
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pr-wrap">
+                <div class="pass-reset">
+                    <label>
+                        Introduce tu email</label>
+                    <input type="email" placeholder="Email" />
+                    <input type="submit" value="Submit" class="pass-reset-submit btn btn-success btn-sm" />
+                </div>
+            </div>
+            <div class="wrap">
+                <p class="form-title">
+                    Modificar perfil</p>
+                <form action="checkEditUser.php" class="login" method="post">
+                    <input type="text" value="';
+        echo $_SESSION['user'];
+        echo'" name="userName"/>
+                    <input type="text" value="';
+        echo $_SESSION['email'];
+        echo '" name="email"/>
+                    <input type="password" placeholder="Contraseña" name="password"/>
+                    <input type="password" placeholder="Reescribir contraseña" name="retypePassword"/>
+                    <input type="submit" value="Modificar" class="btn btn-success btn-sm" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>';
     }
 
 }
