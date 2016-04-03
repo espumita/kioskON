@@ -104,7 +104,7 @@ class View{
 								<ul class="dropdown-menu">
 									<li><a href="#"></a></li>
 									<li><a href="uploadNewIssue.php">Nueva entrega</a></li>
-									<li><a href="#">Modificar entrega</a></li>
+									<li><a href="modifyIssue.php">Modificar entrega</a></li>
 									<li><a href="#">Eliminar entrega</a></li>
 									<li role="separator" class="divider"></li>
 									<li><a href="createNewMagazine.php">Añadir Revista</a></li>
@@ -565,4 +565,62 @@ echo'
         <input type="button" class="btn btn-primary" value="Comprar ejemplar" onclick="window.open(\'https://www.paypal.com/signin/?country.x=ES&locale.x=es_ES\')" />
     </div>';
     }
+
+    public static function modifyIssueForm($id){
+        echo'
+ <form method="post" enctype="multipart/form-data" action="modifyIssueForm.php">
+     <table>
+         <tr>
+             <td colspan=2><input name="userFile" type="file"> <input name="id" type="hidden" value="'.$id.'"></td>
+         </tr>
+         <tr>
+             <td>Número: </td>
+             <td><input name="number" type="text" value=""></td>
+         </tr>
+         <tr>
+             <td>Coste: </td>
+             <td><input name="cost" type="text" value=""></td>
+         </tr>
+         <tr>
+             <td><input name="upload" type="submit" value="Subir"></td>
+         </tr>
+     </table>
+ </form>';
+     }
+
+   public static function userCurrentMagazinesListModify($dbConnection){
+       echo '
+<h2>Mis revistas</h2>
+<table><form action="modifyIssueForm.php" method="POST">
+   <tr>
+       <th>ID Entrega</th>
+       <th>Revista</th>
+       <th>Nombre Fichero</th>
+       <th>Numero de Entrega</th>
+       <th>Coste Unitario</th>
+       <th>Modificar fichero</th>
+   </tr>';
+        self::deployMagazineTableRowsModify($dbConnection);
+        echo '</form>
+</table>';
+}
+   public static function deployMagazineTableRowsModify($dbConnection){
+       if($select = (new DataBaseSelect($dbConnection))->allUserIssues($_SESSION['id'])) {
+           if (!is_int($select)) {
+                 while ($row = $select->fetch_assoc()) self::deploySingleRowModify($row);
+            }
+        };
+}
+   public static function deploySingleRowModify($row){
+       echo '
+<tr>
+    <td>'.$row['_id'].'</td>
+    <td>'.$row['magazineName'].'</td>
+    <td>'.$row['fileName'].'</td>
+    <td>'.$row['issueNumber'].'</td>
+    <td>'.$row['unitCost'].'</td>
+    <td><input name="botonListaModificar" type="submit" value="Modificar '.$row['_id'].'"></td>
+</tr>';
+    }
+
 }
