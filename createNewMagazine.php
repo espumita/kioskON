@@ -9,6 +9,7 @@ session_start();
 if(!Check::session()) (new Redirection())->to("index.php?BadLogin=badLogin");
 
 View::pageHeader('Crear Revista');
-View::logOut();
+View::userLoggedNavigationBar();
 View::createMagazineForm();
+View::carousel();
 View::pageFooter();

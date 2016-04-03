@@ -6,10 +6,9 @@ use kioskon\application\utils\Check;
 use kioskon\application\utils\Redirection;
 
 session_start();
-if(Check::session()) (new Redirection())->to("index.php?BadLogin=badLogin");
 
-View::pageHeader('Registrarse');
-View::userNoLoggedNavigationBar();
-View::registerForm();
+View::pageHeader('Borrar revistas');
+View::userLoggedNavigationBar();
+View::deleteMagazineForm();
 View::carousel();
 View::pageFooter();
