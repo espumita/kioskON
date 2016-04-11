@@ -57,6 +57,22 @@ class DataBaseSelect extends DataBaseHelper{
             return -1;
         }
     }
+    
+    public function searchByPrice($min, $max) {
+        // AQUI HACER MI CONSULTA PARA BUSCAR POR UN RANGO DE PRECIOS
+        // LA VISTA QUE CONTIENE EL BUSCAR SE LLAMA userLoggedNavigationBar EN EL FICHERO view.php
+        // CREAR UNA VISTA DONDE SE MUESTREN LOS RESULTADOS
+        $string = "SELECT ".$this->ISSUE_NUMBER.",".$this->FILE_NAME.",".$this->ISSUES_FK.",".$this->TABLE_ISSUES.".".$this->ISSUE_ID.",".$this->UNIT_COST.",".$this->TABLE_MAGAZINES.".".$this->MAGAZINE_NAME.
+            " FROM ".$this->TABLE_ISSUES.
+            " INNER JOIN " . $this->TABLE_MAGAZINES .
+            " ON ".$this->TABLE_MAGAZINES.".".$this->MAGAZINE_ID."=".$this->TABLE_ISSUES.".".$this->ISSUES_FK.
+            " WHERE ".$this->TABLE_MAGAZINES.".".$this->OWNER."='$id'";
+        if( $select = $this->dbConnection->query($string)){
+
+            if(mysqli_num_rows($select)) return $select;
+            return -1;
+        }
+    }
 
     public function checkMagazineName($magazineName) {
         if($select =  $this->dbConnection->query("SELECT * FROM ".$this->TABLE_MAGAZINES.

@@ -59,7 +59,7 @@ class View{
 
 							<div class="pull-right">
 							<!-- en action va la url donde iría el resultado de búsqueda -->
-						        <form class="navbar-form" role="search" action="#">
+						        <form class="navbar-form" role="search" method="post" action="searchView.php">
 						        <div class="input-group">
 						            <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
 						            <div class="input-group-btn">
