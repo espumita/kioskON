@@ -24,4 +24,8 @@ class DataBaseHelper{
     public $PUBLICATION_DATE = "publicationDate";
     public $FILE_CONTENT = "fileContent";
     public $UNIT_COST = "unitCost";
+
+    public $TABLE_PURCHASES = "purchases";
+    public $PURCHASE_USER = '_idUser';
+    public $PURCHASE_ISSUE= '_idIssue';
 }

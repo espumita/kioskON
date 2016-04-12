@@ -35,6 +35,26 @@ class DataBaseSelect extends DataBaseHelper{
         return -1;
     }
 
+    public function downloadIssue($issueID) {
+        if($select =  $this->dbConnection->query("SELECT ".$this->FILE_NAME.",".$this->FILE_SIZE.",".$this->FILE_CONTENT." FROM ".$this->TABLE_ISSUES.
+            " WHERE ".$this->ISSUE_ID." ='".$issueID."'")){
+
+            if(mysqli_num_rows($select)) return $select;
+            return -1;
+        }
+    }
+
+    public function purchases($userID) {
+        if($select =  $this->dbConnection->query("SELECT ".$this->PURCHASE_ISSUE.",".$this->ISSUE_NUMBER." FROM ".$this->TABLE_PURCHASES.
+            " INNER JOIN " . $this->TABLE_ISSUES .
+            " ON ".$this->TABLE_PURCHASES.".".$this->PURCHASE_ISSUE."=".$this->TABLE_ISSUES.".".$this->ISSUE_ID.
+            " WHERE ".$this->PURCHASE_USER." ='".$userID."'")){
+
+            if(mysqli_num_rows($select)) return $select;
+            return -1;
+        }
+    }
+
     public function allUserMagazines($id) {
         if( $select = $this->dbConnection->query("SELECT ".$this->MAGAZINE_ID.",".$this->MAGAZINE_NAME.",".$this->PERIODICITY.
             " FROM ".$this->TABLE_MAGAZINES.

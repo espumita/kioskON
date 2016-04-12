@@ -55,6 +55,7 @@ class View{
 									<li><a href="#">Periódicos</a></li>
 									<li><a href="#">Revistas</a></li>
 								</ul>
+								</ul>
 							</li>
 
 							<div class="pull-right">
@@ -110,6 +111,7 @@ class View{
 									<li><a href="createNewMagazine.php">Añadir Revista</a></li>
 									<li><a href="#">Modificar Revista</a></li>
 									<li><a href="eliminarRevista.php">Eliminar Revista</a></li>
+									<li><a href="downloadIssue.php">Descargar Revista</a></li>
                                     <li role="separator" class="divider"></li>
 									<li><a href="#">Añadir Suscripción</a></li>
 									<li><a href="#">Modificar Suscripción</a></li>
@@ -587,6 +589,35 @@ echo'
      </table>
  </form>';
      }
+
+    public static function userPurchases($dbConnection){
+        echo '
+<h2>Mis revistas compradas</h2>
+<table><form action="downloadIssueForm.php" method="POST">
+   <tr>
+       <th>ID Entrega</th>
+       <th>Número de Entrega</th>
+   </tr>';
+        self::deployPurchasesRows($dbConnection);
+        echo '</form>
+</table>';
+    }
+    public static function deployPurchasesRows($dbConnection){
+        if($select = (new DataBaseSelect($dbConnection))->purchases($_SESSION['id'])) {
+            if (!is_int($select)) {
+                while ($row = $select->fetch_assoc()) self::deploySingleRowPurchases($row);
+            }
+        };
+    }
+
+    public static function deploySingleRowPurchases($row){
+        echo '
+<tr>
+    <td>'.$row['_idIssue'].'</td>
+        <td>'.$row['issueNumber'].'</td>
+    <td><input name="botonListaDescargar" type="submit" value="Descargar '.$row['_idIssue'].'"></td>
+</tr>';
+    }
 
    public static function userCurrentMagazinesListModify($dbConnection){
        echo '
