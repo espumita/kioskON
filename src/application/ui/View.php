@@ -164,12 +164,9 @@ class View{
 </div>';
     }
     
-    public static function search( $dbConnection, $min, $max = NULL ){
+    public static function search( $dbConnection, $min, $max ){
         
-        if( $max )
-            $select = (new DataBaseSelect($dbConnection))->searchByPrice($min, $max);
-        else
-            $select = (new DataBaseSelect($dbConnection))->searchByPrice($min);
+        $select = (new DataBaseSelect($dbConnection))->searchByPrice($min, $max);
         
         if( $select ){
             
