@@ -111,7 +111,7 @@ class View{
 									<li><a href="createNewMagazine.php">Añadir Revista</a></li>
 									<li><a href="#">Modificar Revista</a></li>
 									<li><a href="eliminarRevista.php">Eliminar Revista</a></li>
-									<li><a href="downloadIssue.php">Descargar Revista</a></li>
+									<li><a href="downloadIssue.php">Revistas Compradas</a></li>
                                     <li role="separator" class="divider"></li>
 									<li><a href="#">Añadir Suscripción</a></li>
 									<li><a href="#">Modificar Suscripción</a></li>
@@ -597,6 +597,8 @@ echo'
    <tr>
        <th>ID Entrega</th>
        <th>Número de Entrega</th>
+       <th>Descargar</th>
+       <th>Visualizar</th>
    </tr>';
         self::deployPurchasesRows($dbConnection);
         echo '</form>
@@ -616,6 +618,7 @@ echo'
     <td>'.$row['_idIssue'].'</td>
         <td>'.$row['issueNumber'].'</td>
     <td><input name="botonListaDescargar" type="submit" value="Descargar '.$row['_idIssue'].'"></td>
+    <td><input name="botonListaVisualizar" type="submit" value="Visualizar '.$row['_idIssue'].'"></td>
 </tr>';
     }
 
