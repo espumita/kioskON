@@ -77,6 +77,20 @@ class DataBaseSelect extends DataBaseHelper{
             return -1;
         }
     }
+    
+    public function searchByPrice($min, $max ) {
+        
+        $string = "SELECT ".$this->MAGAZINE_NAME.",".$this->PERIODICITY.",".$this->OWNER.",".$this->PUBLICATION_DATE.",".$this->UNIT_COST.
+            " FROM ".$this->TABLE_ISSUES.
+            " INNER JOIN " . $this->TABLE_MAGAZINES .
+            " ON ".$this->TABLE_MAGAZINES.".".$this->MAGAZINE_ID."=".$this->TABLE_ISSUES.".".$this->ISSUES_FK.
+            " WHERE ".$this->TABLE_ISSUES.".".$this->UNIT_COST." >= $min AND ".$this->UNIT_COST." <= $max ";
+        
+        if( $select = $this->dbConnection->query($string)){
+            if(mysqli_num_rows($select)) return $select;
+            return false;
+        }
+    }
 
     public function checkMagazineName($magazineName) {
         if($select =  $this->dbConnection->query("SELECT * FROM ".$this->TABLE_MAGAZINES.

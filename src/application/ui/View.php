@@ -60,7 +60,7 @@ class View{
 
 							<div class="pull-right">
 							<!-- en action va la url donde iría el resultado de búsqueda -->
-						        <form class="navbar-form" role="search" action="#">
+						        <form class="navbar-form" role="search" method="post" action="search.php">
 						        <div class="input-group">
 						            <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
 						            <div class="input-group-btn">
@@ -125,7 +125,7 @@ class View{
 							</li>
 
 							<div class="pull-right">
-						        <form class="navbar-form" role="search" action="./searchWithFilter.html">
+						        <form class="navbar-form" role="search" action="search.php">
 						        <div class="input-group">
 						            <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
 						            <div class="input-group-btn">
@@ -164,6 +164,38 @@ class View{
     </div>
   </div>
 </div>';
+    }
+    
+    public static function search( $dbConnection, $min, $max ){
+        
+        $select = (new DataBaseSelect($dbConnection))->searchByPrice($min, $max);
+        
+        if( $select ){
+            
+            ob_start();
+                ?>
+                    <table>
+                        <caption>Results</caption>
+                        <thead>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Date</th>
+                        </thead>
+                <?php 
+                
+                while ($row = mysqli_fetch_row($select)) {
+                        ?>
+                            <tr>
+                                <td><?php echo $row[0]; ?></td>
+                                <td><?php echo $row[4] . "€"; ?></td>
+                                <td><?php echo date( "d/m/Y", strtotime($row[3])); ?></td>
+                            </tr>
+                        <?php
+                }
+                    ?> </table> <?php
+            echo ob_get_clean();
+            
+        }else{ echo "no hay coincidencias"; }
     }
 
     public static function loginForm(){
