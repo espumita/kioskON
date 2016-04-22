@@ -6,17 +6,21 @@
     <body>
 
         <?php
+        use kioskon\application\utils\Redirection;
+
+        session_start();
         header("Content-Type: text/html;charset=utf-8");
         if (new mysqli("db4free.net", "kioskon", "kioskon", "kioskon"))
         {
             $conexion = new mysqli("db4free.net", "kioskon", "kioskon", "kioskon");
             $acentos = $conexion->query("SET NAMES 'utf8'");
                        
-            $query = "delete from users where _id='$_SESSION'";
+            $query = "delete from users where _id='".$_SESSION['id']."' ";
             //$query = "delete from users where userName='prueba'";
             $result = $conexion -> query($query);
             
             $conexion->close();
+            (new Redirection())->to("logout.php");
         }else{
             echo "Error de conexi�n con la base de datos";
         }
