@@ -167,7 +167,7 @@ class View{
     }
     
     public static function search( $dbConnection, $min, $max ){
-        
+        date_default_timezone_set('utc');
         $select = (new DataBaseSelect($dbConnection))->searchByPrice($min, $max);
         
         if( $select ){
