@@ -115,4 +115,12 @@ class DataBaseSelect extends DataBaseHelper{
         }
         return false;
     }
+
+    public function allMagazines() {
+        if( $select = $this->dbConnection->query("SELECT * ".
+            " FROM ".$this->TABLE_MAGAZINES)){
+            if(mysqli_num_rows($select)) return mysqli_fetch_all($select,1);
+            return -1;
+        }
+    }
 }
