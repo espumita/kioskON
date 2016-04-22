@@ -16,8 +16,8 @@ class Search {
     public function magazineName($searchedMagazine) {
         $select = (new DataBaseSelect($this->dbConnection))->allMagazines();
         foreach ($select as $tableMagazineColumn=>$tableMagazineRow){
-            if(strcmp($select[$tableMagazineColumn]['magazineName'],$searchedMagazine)) return $searchedMagazine;
+            if(strcmp($select[$tableMagazineColumn]['magazineName'],$searchedMagazine) == 0) return $select[$tableMagazineColumn]['magazineName'];
         }
-        return -1;
+        return "Not Found";
     }
 }

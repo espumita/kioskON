@@ -125,7 +125,7 @@ class View{
 							</li>
 
 							<div class="pull-right">
-						        <form class="navbar-form" role="search" action="search.php">
+						        <form class="navbar-form" role="search" method="post" action="search.php">
 						        <div class="input-group">
 						            <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
 						            <div class="input-group-btn">
@@ -721,5 +721,21 @@ echo'
     </div>
 </div>';
     }
-
+    
+    public static function magazineTable($magazines){
+        echo '
+<table>
+    <caption>Results</caption>
+    <thead>
+        <th>Name</th>
+        </thead> 
+    <tr>
+        <td>';
+        echo $magazines;
+        echo'
+        </td>
+    </tr>
+</table>';
+    }
+    
 }
