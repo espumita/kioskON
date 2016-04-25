@@ -10,4 +10,6 @@ if( strpos($_POST['srch-term'], "-") !== FALSE ){
 
 $dbConnection = new DataBaseConnection();
 $dbConnection->start();
+View::pageHeader('Search...');
 View::search( $dbConnection->connection(), $min, $max );
+View::pageFooter();
