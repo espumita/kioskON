@@ -46,7 +46,7 @@ class View{
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="index.php" class="">Principal</a></li>
-
+                        
 							<li><a href="#" class="">Periódicos</a></li>
 							<li><a href="#" class="">Revistas</a></li>
 							<li><a href="tarifas.php" class="">Tarifas</a></li>
@@ -55,8 +55,11 @@ class View{
 									<li><a href="#">Periódicos</a></li>
 									<li><a href="#">Revistas</a></li>
 								</ul>
-								</ul>
 							</li>
+				            <li><a href="faq.php" class="">FAQ</a></li>
+					</ul>
+
+
 
 							<div class="pull-right">
 							<!-- en action va la url donde iría el resultado de búsqueda -->
@@ -123,7 +126,7 @@ class View{
 									<li><a href="#">Lanzamiento</a></li>
 								</ul>
 							</li>
-
+                            <li><a href="faq.php" class="">FAQ</a></li>
 							<div class="pull-right">
 						        <form class="navbar-form" role="search" action="./searchWithFilter.html">
 						        <div class="input-group">
@@ -690,4 +693,177 @@ echo'
 </div>';
     }
 
+
+    public static function faqBody(){
+        echo "<div class=\"faqBody\">   
+<ul>
+  <li class=\"li-faq\"><a href=\"#faq1\">¿Qué es KioskON?</a></li>
+  <li class=\"li-faq\"><a href=\"#faq2\">¿Qué ventajas tiene ser cliente de KioskON?</a></li>
+  <li class=\"li-faq\"><a href=\"#faq3\">¿Qué requisitos mínimos debe tener mi dispositivo para poder visualizar KioskON?</a></li>
+  <li class=\"li-faq\"><a href=\"#faq4\">¿Hace falta registrarse?</a></li>
+  <li class=\"li-faq\"><a href=\"#faq5\">¿Qué pasa si ya soy suscriptor de edición impresa?</a></li>
+  <li class=\"li-faq\"><a href=\"#faq6\">¿Qué es un plan de suscripción?</a></li>
+  <li class=\"li-faq\"><a href=\"#faq8\">¿Cuántos periódicos o revistas puedo comprar?</a></li>
+  <li class=\"li-faq\"><a href=\"#faq9\">¿Los suplementos se venden por separado?</a></li>
+  <li class=\"li-faq\"><a href=\"#faq10\">¿Cuántas publicaciones hay disponibles?</a></li>
+  <li class=\"li-faq\"><a href=\"#faq11\">¿Qué tipo de descuento se aplica?</a></li>
+  <li class=\"li-faq\"><a href=\"#faq12\">¿Puedo acceder a mi cuenta desde mis otros dispositivos?</a></li>
+  <li class=\"li-faq\"><a href=\"#faq13\">¿Puedo compartir las noticias en mis redes sociales?</a></li>
+  <li class=\"li-faq\"><a href=\"#faq14\">¿Necesito instalar algún software/plugin adicional para poder disfrutar de KioskON?</a></li>
+  <li class=\"li-faq\"><a href=\"#faq15\">¿Dónde puedo notificar errores, problemas o sugerencias?</a></li>
+  <li class=\"li-faq\"><a href=\"#faq16\">¿Me avisarán cuando esté mi publicación disponible?</a></li>
+  <li class=\"li-faq\"><a href=\"#faq17\">Me he equivocado ¿Cómo puedo realizar una cancelación?</a></li>
+  <li class=\"li-faq\"><a href=\"#faq18\">¿Existen cuentas oficiales de KioskON en redes sociales?</a></li>
+  <li class=\"li-faq\"><a href=\"#faq19\">¿Qué medios de pago acepta KioskON? </a></li>
+  <li class=\"li-faq\"><a href=\"#faq20\">¿Tengo acceso a ejemplares anteriores si soy suscriptor?</a></li>
+  <li class=\"li-faq\"><a href=\"#faq21\">¿Me puedo descargar las publicaciones a mi disco duro para acceder al contenido?</a></li>
+  <li class=\"li-faq\"><a href=\"#faq22\">Si me doy de alta en una publicación, ¿tendrán los editores mis datos personales?</a></li>
+  <li class=\"li-faq\"><a href=\"#faq23\">¿Puedo disfrutar de las promociones de las distintas publicaciones siendo cliente de KioskON?</a></li>
+</ul>
+<br><br>
+
+<a name=\"faq1\" id=\"faq1\"></a>
+<h2> ¿Qué es KioskON?</h2>
+
+<p>KioskON es el servicio digital que te permite disfrutar de tu 
+periódico o revista tanto en tu ordenador como en tu dispositivo móvil.</p>
+
+<p>Si lo quieres probar desde tu navegador, simplemente <a href=\"http://kioskon.hol.es/\">pincha aquí</a>.</p>
+
+<p>Si lo que deseas es disfrutar de tu prensa favorita desde desde tu 
+dispositivo móvil, visita la página desde tu navegador móvil </p>
+
+  
+  <a name=\"faq2\" id=\"faq2\"></a>
+    <h2> ¿Qué ventajas tiene ser cliente de KioskON?</h2>
+    <p>Por ser cliente de KioskON tendrás acceso a la mayor oferta de prensa de calidad en España:</p>
+
+    <ul>
+      <li>Accederás a todas la oferta de ediciones y suplementos de la publicación a la que te suscribas</li>
+      <li>Podrás elegir entre más de 100 publicaciones</li>
+      <li>Podrás acceder desde tu navegador</li>
+      <li>Puedes disfrutar de descuentos de hasta el 50% al realizar más de una suscripción en la misma compra desde nuestra web</li>
+    </ul>
+  
+  <a name=\"faq3\" id=\"faq3\"></a>
+    <h2> ¿Qué requisitos mínimos debe tener mi dispositivo para poder visualizar KioskON?</h2>
+    <p>Todas las versiones de iPad son compatibles, aunque por rendimiento se recomienda iPad 2 o superior.</p>
+    <p>En el caso de Android todas las versiones Android 2.2 o posteriores son compatibles.</p>
+    <p>También es compatible con cualquier dispositivo que tenga instalado Windows 8 o 10 como sistema operativo.</p>
+    <p>Próximamente nuestro servicio estará disponible para otras plataformas.</p>
+  
+  <a name=\"faq4\" id=\"faq4\"></a>
+    <h2> ¿Hace falta registrarse?</h2>
+    <p>Para realizar las compras debes 
+registrarte. En menos de un minuto 
+podrás disfrutar de todo lo que ofrece <strong>KioskON y sus descuentos</strong>. </p>
+  
+  <a name=\"faq5\" id=\"faq5\"></a>
+    <h2> ¿Qué pasa si ya soy suscriptor de edición impresa?</h2>
+    <p>Si eres suscriptor de un medio en edición impresa, y tu medio 
+ofrece una oferta conjunta papel/digital, podrás seguir disfrutando de 
+todo lo mejor de la edición impresa como hasta ahora, con la ventaja 
+adicional de disfrutar también de tu suscripción en KioskON pagando.</p>
+  
+  <a name=\"faq6\" id=\"faq6\"></a>
+    <h2> ¿Qué es un plan de suscripción?</h2>
+    <p>En KioskON ofrecemos múltiples modos de suscribirte a 
+periódicos y revistas, para que escojas el que mejor se adapte a ti. 
+Pero para acceder a tanta flexibilidad, no olvides darte de alta como 
+cliente.</p>
+    <p>¿Por cuánto tiempo me puedo suscribir?</p>
+    <p>Las suscripciones pueden realizarse por períodos de uno, tres, 
+seis o doce meses
+      y para tu comodidad siempre son autorrenovables. Debido a la 
+periodicidad de algunas publicaciones es posible que las suscripciones 
+de duración menor no siempre estén disponibles.</p>
+    <p>Si ningún plan de suscripción se adapta a ti, siempre puedes 
+disfrutar de descuentos dándote de alta como cliente, y utilizando la 
+compra por ejemplar.</p>
+    <p>Descuentos</p>
+    <p>Recuerda que no puedes suscribirte a revistas y periódicos en la 
+misma compra. Para ello, deberás realizar dos compras distintas. </p>
+ 
+  
+  <a name=\"faq8\" id=\"faq8\"></a>
+    <h2> ¿Cuántos periódicos o revistas puedo comprar?</h2>
+    <p>Puedes disponer de tantos ejemplares como desees. Recuerda que no
+ puedes adquirir periódicos y revistas en una misma compra. En este 
+caso, deberás realizar las compras por separado.</p>
+  
+  <a name=\"faq9\" id=\"faq9\"></a>
+    <h2> ¿Los suplementos se venden por separado?</h2>
+    <p>No. Debes adquirir el ejemplar de la fecha de publicación del suplemento y podrás acceder a las dos publicaciones</p>
+  
+  <a name=\"faq10\" id=\"faq10\"></a>
+    <h2> ¿Cuántas publicaciones hay disponibles?</h2>
+    <p>En KioskON podrás disfrutar de más de 350 de publicaciones 
+entre periódicos y revistas, contamos con las cabeceras más prestigiosas
+ de prensa nacional, así como con una amplia selección de periódicos 
+regionales, de ocio, deportivos y de estilos de vida.</p>
+  
+  <a name=\"faq11\" id=\"faq11\"></a>
+    <h2> ¿Qué tipo de descuento se aplica?</h2>
+    <p>Puedes disfrutar hasta de 50% de descuento en las publicaciones si realizas las compras de una sola vez.</p>
+  
+  <a name=\"faq12\" id=\"faq12\"></a>
+    <h2> ¿Puedo acceder a mi cuenta desde mis otros dispositivos?</h2>
+    <p>Si realizas tu compra desde nuestra web, puedes acceder con tu 
+cuenta desde tu PC, teléfono o tablet. Recuerda que puedes acceder como 
+máximo desde tres dispositivos a la vez.</p>
+  
+  <a name=\"faq13\" id=\"faq13\"></a>
+    <h2> ¿Puedo compartir las noticias en mis redes sociales?</h2>
+    <p>No.</p>
+  
+  <a name=\"faq14\" id=\"faq14\"></a>
+    <h2>¿Necesito instalar algún software/plugin adicional para poder disfrutar de KioskON?</h2>
+    <p>Para acceder desde tu navegador sólo necesitas una conexión a Internet.</p>
+  
+  <a name=\"faq15\" id=\"faq15\"></a>
+    <h2>¿Dónde puedo notificar errores, problemas o sugerencias?</h2>
+    <p>Accede a nuestros <a href=\"https://www.kioskoymas.com/contactar\">datos de contacto</a>.</p>
+  
+  <a name=\"faq16\" id=\"faq16\"></a>
+    <h2>¿Me avisarán cuando esté mi publicación disponible?</h2>
+    <p>Si lo desea, sí. KioskON cuenta con un sistema de 
+notificaciones automáticas, que te avisará por e-mail, de las 
+actualizaciones de las publicaciones en las que estés interesado.</p>
+  
+  <a name=\"faq17\" id=\"faq17\"></a>
+    <h2>Me he equivocado ¿Cómo puedo realizar una cancelación?</h2>
+    <p>Accede a nuestros <a href=\"INSERTAR PÁGINA DE CONTACTO\">datos de contacto</a>.</p>
+  
+  <a name=\"faq18\" id=\"faq18\"></a>
+    <h2>¿Existen cuentas oficiales de KioskON en redes sociales?</h2>
+    <p>No. </p>
+  <a name=\"faq19\" id=\"faq19\"></a>
+    <h2>¿Qué medios de pago acepta KioskON? </h2>
+    <p>Puedes efectuar el pago con VISA, MasterCard, American Express.</p>
+  
+  <a name=\"faq20\" id=\"faq20\"></a>
+    <h2>¿Tengo acceso a ejemplares anteriores si soy suscriptor?</h2>
+    <p>No</p>
+  
+  <a name=\"faq21\" id=\"faq21\"></a>
+    <h2>¿Me puedo descargar las publicaciones a mi disco duro para acceder al contenido?</h2>
+    <p>Sí, podrás descargar los archivos en formato pdf.</p>
+  
+  <a name=\"faq22\" id=\"faq22\"></a>
+    <h2>Si me doy de alta en una publicación, ¿tendrán los editores mis datos personales?</h2>
+    <p>No.</p>
+  
+  <div class=\"question noline\"><a name=\"faq23\" id=\"faq23\"></a>
+    <h2>¿Puedo disfrutar de las promociones de las distintas publicaciones siendo cliente de KioskON?</h2>
+    <p>Es cada cabecera la que decide que promociones de entre las que 
+facilita, ya sea a través de KioskON o en soporte tradicional, son 
+disponibles a través de KioskON, y que condiciones debe cumplir 
+cada usuario para disfrutarlas. Para mas información te sugerimos 
+contactes con los servicios de atención al cliente de tu publicación.</p>
+  
+
+
+  
+</div>";
+    }
 }

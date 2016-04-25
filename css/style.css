@@ -201,7 +201,7 @@ a:link {
 }
 
 /* visited link */
-a:visited {
+ a:visited {
     color: #fff;
 }
 
@@ -213,4 +213,18 @@ a:hover {
 /* selected link */
 a:active {
     color: #fff;
+}
+
+.li-faq a:link {
+    color: #7f8c8d;
+}
+
+/* visited link */
+.li-faq a:visited {
+    color: #34495e;
+}
+
+/* mouse over link */
+.li-faq a:hover {
+    color: #2c3e50;
 }
