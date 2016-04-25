@@ -20,4 +20,12 @@ class Search {
         }
         return "Not Found";
     }
+
+    public function userName($userName) {
+        if($userId = (new DataBaseSelect($this->dbConnection))->userId($userName)){
+            if($data = (new DataBaseSelect($this->dbConnection))->allMagazinesFromUser($userId));
+                if( $data != -1) return $data;
+        };
+        return "Not Found";
+    }
 }

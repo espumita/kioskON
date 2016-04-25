@@ -123,4 +123,30 @@ class DataBaseSelect extends DataBaseHelper{
             return -1;
         }
     }
+
+    public function userId($userName) {
+        if($select =  $this->dbConnection->query("SELECT ".$this->USER_ID." FROM ".$this->TABLE_USERS.
+            " WHERE ".$this->USER_NAME." ='".$userName."'")){
+            if(mysqli_num_rows($select)){
+                $row = mysqli_fetch_assoc($select);
+                return $row[$this->USER_ID];
+            }
+        }
+        return -1;
+    }
+
+    public function allMagazinesFromUser($userId) {
+        if( $select = $this->dbConnection->query("SELECT * ".
+            " FROM ".$this->TABLE_MAGAZINES.
+            " WHERE ".$this->OWNER." ='".$userId."'")){
+            if(mysqli_num_rows($select)){
+                $data = array();
+                while ($row = mysqli_fetch_assoc($select)) {
+                    $data[] = $row[$this->MAGAZINE_NAME];
+                }
+                return $data;
+            }
+            return -1;
+        }
+    }
 }
