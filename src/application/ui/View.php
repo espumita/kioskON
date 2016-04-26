@@ -405,7 +405,6 @@ class View{
                 <tr height=20></tr>';
 
             while ($query_result_magazines = $result_magazines->fetch_array()) {
-                $semanal = 0;
                 $nombre_magazine = $query_result_magazines["magazineName"];
                 $id_magazine = $query_result_magazines["_id"];
                 $query_issues = "select * from issues where magazines__fk='$id_magazine'";
@@ -418,6 +417,7 @@ class View{
                     $query_discounts = "select * from discounts2 where magazines_fk='$id_magazine'";
                     $result_discounts = $conexion->query($query_discounts);
                     while ($query_result_discounts = $result_discounts->fetch_array()) {
+                        $semanal = 0;
                         $dmensual = $query_result_discounts["discountMensual"];
                         $dsemestral = $query_result_discounts["discountSemestral"];
                         $danual = $query_result_discounts["discountAnual"];
@@ -430,7 +430,6 @@ class View{
                         if ($dsemestral != NULL) {
                             if ($semanal == 1) {
                                 $semestral = (($coste - (($coste * $dsemestral) / 100)) * 4) * 6;
-                                $semanal = 0;
                             } else {
                                 $semestral = ($coste - (($coste * $dsemestral) / 100)) * 6;
                             }
@@ -440,7 +439,6 @@ class View{
                         if ($danual != NULL) {
                             if ($semanal == 1) {
                                 $anual = (($coste - (($coste * $danual) / 100)) * 4) * 12;
-                                $semanal = 0;
                             } else {
                                 $anual = ($coste - (($coste * $danual) / 100)) * 12;
                             }
