@@ -742,7 +742,22 @@ echo'
     </tr>
 </table>';
     }
-    
+
+    public static function faqBody(){
+        echo "<div class=\"faqBody\">   
+<ul>
+  <li class=\"li-faq\"><a href=\"#faq1\">¿Qué es KioskON?</a></li>
+  <li class=\"li-faq\"><a href=\"#faq2\">¿Qué ventajas tiene ser cliente de KioskON?</a></li>
+  <li class=\"li-faq\"><a href=\"#faq3\">¿Qué requisitos mínimos debe tener mi dispositivo para poder visualizar KioskON?</a></li>
+  <li class=\"li-faq\"><a href=\"#faq4\">¿Hace falta registrarse?</a></li>
+  <li class=\"li-faq\"><a href=\"#faq5\">¿Qué pasa si ya soy suscriptor de edición impresa?</a></li>
+  <li class=\"li-faq\"><a href=\"#faq6\">¿Qué es un plan de suscripción?</a></li>
+  <li class=\"li-faq\"><a href=\"#faq8\">¿Cuántos periódicos o revistas puedo comprar?</a></li>
+  <li class=\"li-faq\"><a href=\"#faq9\">¿Los suplementos se venden por separado?</a></li>
+  <li class=\"li-faq\"><a href=\"#faq10\">¿Cuántas publicaciones hay disponibles?</a></li>
+  <li class=\"li-faq\"><a href=\"#faq11\">¿Qué tipo de descuento se aplica?</a></li>
+  <li class=\"li-faq\"><a href=\"#faq12\">¿Puedo acceder a mi cuenta desde mis otros dispositivos?</a></li>
+  <li class=\"li-faq\"><a href=\"#faq13\">¿Puedo compartir las noticias en mis redes sociales?</a></li>
   <li class=\"li-faq\"><a href=\"#faq14\">¿Necesito instalar algún software/plugin adicional para poder disfrutar de KioskON?</a></li>
   <li class=\"li-faq\"><a href=\"#faq15\">¿Dónde puedo notificar errores, problemas o sugerencias?</a></li>
   <li class=\"li-faq\"><a href=\"#faq16\">¿Me avisarán cuando esté mi publicación disponible?</a></li>
