@@ -236,3 +236,29 @@ a:active {
 .faq-list{
     padding: 25px;
 }
+
+
+slider {
+    margin: 30px;
+    height: 200px;
+    display: block;
+    perspective: 1000px;
+    transform-style: flat;
+    position: relative;
+    width: 100%;
+    z-index: 999;
+}
+slider img {
+    display: inline-block;
+    border-radius: 5px;
+    width: 200px;
+    position: absolute;
+    backface-visibility: hidden;
+    transform-origin: 50% 0;
+    transition: .4s all;
+    cursor: pointer;
+    box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.8);
+}
+slider img.active {
+    box-shadow: 0 0 40px 5px black;
+}

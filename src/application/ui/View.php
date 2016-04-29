@@ -29,7 +29,7 @@ class View{
 
     public static function contactOption(){
         echo'
-<div id="footer" style="background-color: #242729; height: 100px; text-align: center;">
+<div id="footer" style="background-color: #242729; height: 100px;text-align: center;">
     <a href="contacto.php">Contacto</a>
 </div>';
     }
@@ -592,57 +592,21 @@ echo'
 
     public static function cosas(){
         echo'
-
-    <div style="background-color: #2E2E2E; padding:30px 0px 30px 0px">
-
-    <div class="row" style="margin: 20px 0px 20px 0px">
-        <div class="col-md-2"></div>
-        <div class="col-md-2">
-            <img src="img/abc.png" width="150" height="220">            
-        </div>
-        <div class="col-md-2">
-            <img src="img/elpais.jpg" width="150" height="220">
-        </div>
-        <div class="col-md-2">
-            <img src="img/lavanguardia.png" width="150" height="220">
-        </div>    
-        <div class="col-md-2">
-            <img src="img/larazon.png" width="150" height="220">
-        </div>    
+<div style="background-color: #2E2E2E; padding:30px 0px 30px 0px; margin: 0px; height: 800px;">
+    <div style="padding: 20px;">
+        <slider>
+          <img src="http://img.kiosko.net/2016/04/25/es/elpais.750.jpg?width=370&amp;height=477"/>
+          <img src="http://img.kiosko.net/2016/04/25/es/elmundo.750.jpg?width=370&amp;height=477"/>
+          <img src="http://img.kiosko.net/2016/04/25/es/marca.750.jpg?width=370&amp;height=477"/>
+          <img class="active" src="http://imgs.zinio.com/dag/500653040/2016/416376131/cover.jpg?width=370&amp;height=477"/>
+          <img src="http://imgs.zinio.com/dag/500598154/2016/416376367/cover.jpg?width=370&amp;height=477"/>
+          <img src="http://imgs.zinio.com/dag/500653029/2016/416376291/cover.jpg?width=370&amp;height=477"/>
+          <!--<img src="http://img.kiosko.net/2016/04/25/es/marca.750.jpg"/>-->
+        </slider>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src = "js/index.js" ></script >
     </div>
-
-    <div class="row" style="margin: 20px 0px 20px 0px">
-        <div class="col-md-2"></div> 
-        <div class="col-md-2">
-            <img src="img/computer.png" width="150" height="220">            
-        </div>
-        <div class="col-md-2">
-            <img src="img/fotogramas.png" width="150" height="220">
-        </div>
-        <div class="col-md-2">
-            <img src="img/onehacker.png" width="150" height="220">
-        </div> 
-        <div class="col-md-2">
-            <img src="img/national.png" width="150" height="220">
-        </div>       
-    </div>
-
-    <div class="row"  style="margin: 20px 0px 20px 0px">
-        <div class="col-md-2"></div> 
-        <div class="col-md-2">
-            <img src="img/bikes.png" width="150" height="220">            
-        </div>
-        <div class="col-md-2">
-            <img src="img/motor.png" width="150" height="220">
-        </div>
-        <div class="col-md-2">
-            <img src="img/muyhistoria.png" width="150" height="220">
-        </div>   
-        <div class="col-md-2">
-            <img src="img/eljueves.png" width="150" height="220">
-        </div>     
-    </div>
-    </div>';
+</div>';
     }
 
     public static function button()
