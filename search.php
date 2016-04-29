@@ -19,6 +19,11 @@ if( $pos = strpos($_POST['srch-term'], "-") !== FALSE ){
     
 }else{
     $result = (new Search($dbConnection->connection()))->magazineName($_POST['srch-term']);
-    View::magazineTable($result);
+    if($result == "Not Found"){
+        $result2 = (new Search($dbConnection->connection()))->userName($_POST['srch-term']);
+        View::magazinesFromUserTable($result2);
+    }else{
+        View::magazineTable($result);
+    }
 }
 

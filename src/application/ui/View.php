@@ -945,4 +945,22 @@ contactes con los servicios de atención al cliente de tu publicación.</p>
 </div>  
 </div>";
     }
+
+    public static function magazinesFromUserTable($result) {
+        echo '
+<table>
+    <caption>Results</caption>
+    <thead>
+        <th>Name</th>
+        </thead>';
+        if($result != "Not Found"){
+            foreach ($result as $magazine){
+                echo '<tr><td>'.$magazine.'</td></tr>';
+            }
+        }else{
+            echo '<tr><td>'.$result.'</td></tr>';
+        }
+        echo'
+</table>';
+    }
 }
