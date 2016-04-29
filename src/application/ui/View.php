@@ -27,6 +27,13 @@ class View{
 <body>';
     }
 
+    public static function contactOption(){
+        echo'
+<div id="footer" style="background-color: #242729; height: 100px; text-align: center;">
+    <a href="contacto.php">Contacto</a>
+</div>';
+    }
+
     public static function pageFooter() {
         echo '
 </body>
@@ -972,5 +979,63 @@ contactes con los servicios de atención al cliente de tu publicación.</p>
         }
         echo'
 </table>';
+    }
+
+    public static function contact() {
+        echo'
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="icon" href="./img/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<script src=\'./js/scripts.js\'></script>
+	<script src=\'./js/jquery.min.js\'></script>
+	<!--<link rel="stylesheet" href="./css/bootstrap.min.css">
+	<link rel="stylesheet" href="./css/bootstrap-theme.min.css">-->
+	<script src="./js/bootstrap.min.js"></script>
+	<meta name="viewport" content="width=device-width">
+    <link rel=\'stylesheet prefetch\' href=\'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css\'>
+	<link rel="stylesheet" href="css/styleContactar.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/normalize.css">
+	<title>Kioskon</title>
+</head>
+
+<body>
+
+<div class=\'form-overlay\'></div>
+      <div class=\'icon fa fa-pencil\' id=\'form-container\'>
+        <span class=\'icon fa fa-close\' id=\'form-close\'></span>
+        <div id=\'form-content\'>
+          <div id=\'form-head\'>
+            <h1 class=\'pre\'>Formulario de Contacto</h1>
+            <p class=\'pre\'>Cuando quieras</p>
+            <h1 class=\'post\'>Muchas gracias</h1>
+            <p class=\'post\'>Nos pondremos en contacto contigo lo más rápido posible</p>
+          </div>
+          <form>
+            <input class=\'input name\' name=\'user_name\' placeholder=\'Nombre\' type=\'text\'>
+            <input class=\'input email\' name=\'user_email\' placeholder=\'Email\' type=\'text\'>
+            <select class=\'input select\' name=\'subject\'>
+              <option selected=\'\'>¿Puedo comprar periódicos atrasados?</option>
+              <option disabled=\'\'>Cada cuanto tiempo se publica mi revista</option>  
+              <option>Cuantas subidas puedo hacer al día</option>
+              <option>Otras preguntas</option>
+            </select>
+            <textarea class=\'input message\' placeholder=\'¿Qué es lo que necesitas de Kioskon?\'></textarea>
+            <input class=\'input submit\' type=\'submit\' value=\'Enviar Mensaje\'>
+          </form>
+        </div>
+    </div>
+    <script src=\'http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js\'></script>
+    <script src=\'http://codepen.io/woodwork/pen/XXZaGQ.js\'></script>
+
+      <script src="js/indexContactar.js"></script>	    
+        
+</body>
+</html>
+';
     }
 }

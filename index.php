@@ -12,5 +12,5 @@ if(Check::session()){
     View::userNoLoggedNavigationBar();
 }
 View::cosas();
-View::button();
+View::contactOption();
 View::pageFooter();
