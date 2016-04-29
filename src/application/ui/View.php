@@ -221,8 +221,7 @@ class View{
                             <tr>
                                 <td><?php echo $row[0]; ?></td>
                                 <td><?php echo $row[4] . "€"; ?></td>
-                                <td><?php // echo date( "d/m/Y", strtotime($row[3])); ?></td>
-                                <td><?php var_dump( $row[3] ); ?></td>
+                                <td><?php echo date( "d/m/Y", strtotime($row[3])); ?></td>
                             </tr>
                         <?php
                 }
