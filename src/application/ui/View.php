@@ -49,7 +49,12 @@ class View{
                         
 							<li><a href="#" class="">Periódicos</a></li>
 							<li><a href="#" class="">Revistas</a></li>
-							<li><a href="tarifas.php" class="">Tarifas</a></li>
+							<li class=" dropdown"><a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Precios<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="ofertasRevistas.php">Ofertas</a></li>
+									<li><a href="tarifas.php">Tarifas</a></li>
+								</ul>
+							</li>
 							<li class=" dropdown"><a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Próximos Lanzamientos<span class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li><a href="#">Periódicos</a></li>
@@ -103,7 +108,12 @@ class View{
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="index.php" class="">Principal</a></li>
-                            <li><a href="tarifas.php" class="">Tarifas</a></li>
+							<li class=" dropdown"><a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Precios<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="ofertasRevistas.php">Ofertas</a></li>
+									<li><a href="tarifas.php">Tarifas</a></li>
+								</ul>
+							</li>
 							<li class=" dropdown"><a href="#" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Gestionar <span class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li><a href="#"></a></li>
