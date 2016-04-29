@@ -171,6 +171,37 @@ class View{
 </div>';
     }
     
+    public static function searchByDate( $dbConnection, $date ){
+        $select = (new DataBaseSelect($dbConnection))->searchByDate($date);
+        
+        if( $select ){
+            
+            ob_start();
+                ?>
+                    <table>
+                        <caption>Results</caption>
+                        <thead>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Date</th>
+                        </thead>
+                <?php 
+                
+                while ($row = mysqli_fetch_row($select)) {
+                        ?>
+                            <tr>
+                                <td><?php echo $row[0]; ?></td>
+                                <td><?php echo $row[4] . "€"; ?></td>
+                                <td><?php echo date( "d/m/Y", strtotime($row[3])); ?></td>
+                            </tr>
+                        <?php
+                }
+                    ?> </table> <?php
+            echo ob_get_clean();
+            
+        }else{ echo "no hay coincidencias"; }
+    }
+    
     public static function search( $dbConnection, $min, $max ){
         date_default_timezone_set('utc');
         $select = (new DataBaseSelect($dbConnection))->searchByPrice($min, $max);
