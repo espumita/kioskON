@@ -742,7 +742,7 @@ echo'
     }
 
     public static function faqBody(){
-        echo "<div class=\"faqBody\">   
+        echo "<div class=\"faqBody\" style=\"background-color: #2E2E2E; padding:30px 0px 30px 0px\">   
 <ul>
   <li class=\"li-faq\"><a href=\"#faq1\">¿Qué es KioskON?</a></li>
   <li class=\"li-faq\"><a href=\"#faq2\">¿Qué ventajas tiene ser cliente de KioskON?</a></li>
@@ -768,7 +768,7 @@ echo'
   <li class=\"li-faq\"><a href=\"#faq23\">¿Puedo disfrutar de las promociones de las distintas publicaciones siendo cliente de KioskON?</a></li>
 </ul>
 <br><br>
-
+<div class=\"faq-list\" >
 <a name=\"faq1\" id=\"faq1\"></a>
 <h2> ¿Qué es KioskON?</h2>
 
@@ -869,7 +869,7 @@ máximo desde tres dispositivos a la vez.</p>
   
   <a name=\"faq15\" id=\"faq15\"></a>
     <h2>¿Dónde puedo notificar errores, problemas o sugerencias?</h2>
-    <p>Accede a nuestros <a href=\"https://www.kioskoymas.com/contactar\">datos de contacto</a>.</p>
+    <p>Accede a nuestros <a href=\"INSERTAR PÁGINA DE CONTACTO\">datos de contacto</a>.</p>
   
   <a name=\"faq16\" id=\"faq16\"></a>
     <h2>¿Me avisarán cuando esté mi publicación disponible?</h2>
@@ -910,7 +910,7 @@ contactes con los servicios de atención al cliente de tu publicación.</p>
   
 
 
-  
+</div>  
 </div>";
     }
 }

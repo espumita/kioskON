@@ -13,5 +13,4 @@ if(Check::session()){
     View::userNoLoggedNavigationBar();
 }
 View::faqBody();
-View::carousel();
 View::pageFooter();

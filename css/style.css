@@ -228,3 +228,11 @@ a:active {
 .li-faq a:hover {
     color: #2c3e50;
 }
+
+.faqBody{
+    color: #eeeeec;
+}
+
+.faq-list{
+    padding: 25px;
+}
