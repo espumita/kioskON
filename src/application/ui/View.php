@@ -172,6 +172,7 @@ class View{
     }
     
     public static function searchByDate( $dbConnection, $date ){
+        date_default_timezone_set('utc');
         $select = (new DataBaseSelect($dbConnection))->searchByDate($date);
         
         if( $select ){
