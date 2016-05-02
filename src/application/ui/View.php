@@ -979,16 +979,16 @@ contactes con los servicios de atención al cliente de tu publicación.</p>
             <h1 class=\'post\'>Muchas gracias</h1>
             <p class=\'post\'>Nos pondremos en contacto contigo lo más rápido posible</p>
           </div>
-          <form>
-            <input class=\'input name\' name=\'user_name\' placeholder=\'Nombre\' type=\'text\'>
-            <input class=\'input email\' name=\'user_email\' placeholder=\'Email\' type=\'text\'>
-            <select class=\'input select\' name=\'subject\'>
+          <form action="mail.php" method="post">
+            <input class=\'input name\' name=\'name\' placeholder=\'Nombre\' type=\'text\'>
+            <input class=\'input email\' name=\'email\' placeholder=\'Email\' type=\'text\'>
+            <select class=\'input select\' name=\'select\'>
               <option selected=\'\'>¿Puedo comprar periódicos atrasados?</option>
               <option disabled=\'\'>Cada cuanto tiempo se publica mi revista</option>  
               <option>Cuantas subidas puedo hacer al día</option>
               <option>Otras preguntas</option>
             </select>
-            <textarea class=\'input message\' placeholder=\'¿Qué es lo que necesitas de Kioskon?\'></textarea>
+            <textarea name=\'message\' class=\'input message\' placeholder=\'¿Qué es lo que necesitas de Kioskon?\'></textarea>
             <input class=\'input submit\' type=\'submit\' value=\'Enviar Mensaje\'>
           </form>
         </div>
