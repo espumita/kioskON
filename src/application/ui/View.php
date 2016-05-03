@@ -595,9 +595,9 @@ echo'
 <div style="background-color: #2E2E2E; padding:30px 0px 30px 0px; margin: 0px; height: 800px;">
     <div style="padding: 20px;">
         <slider>
-          <img src="http://img.kiosko.net/2016/04/25/es/elpais.750.jpg?width=370&amp;height=477"/>
-          <img src="http://img.kiosko.net/2016/04/25/es/elmundo.750.jpg?width=370&amp;height=477"/>
-          <img src="http://img.kiosko.net/2016/04/25/es/marca.750.jpg?width=370&amp;height=477"/>
+          <img src="http://img.kiosko.net/2016/05/03/es/elpais.750.jpg?width=370&amp;height=477"/>
+          <img src="http://img.kiosko.net/2016/05/03/es/elmundo.750.jpg?width=370&amp;height=477"/>
+          <img src="http://img.kiosko.net/2016/05/03/es/marca.750.jpg?width=370&amp;height=477"/>
           <img class="active" src="http://imgs.zinio.com/dag/500653040/2016/416376131/cover.jpg?width=370&amp;height=477"/>
           <img src="http://imgs.zinio.com/dag/500598154/2016/416376367/cover.jpg?width=370&amp;height=477"/>
           <img src="http://imgs.zinio.com/dag/500653029/2016/416376291/cover.jpg?width=370&amp;height=477"/>
